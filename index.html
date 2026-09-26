@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>অনলাইন লাইব্রেরী - সরাসরি বই পড়ার স্থান</title>
+    <title>ইসলামী অনলাইন লাইব্রেরী - ICS Book Reader</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts (Hind Siliguri) -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <script>
@@ -16,10 +16,9 @@
             theme: {
                 extend: {
                     colors: {
-                        brandBlue: '#1e3a8a',
-                        brandBlueDark: '#0f172a',
+                        brandBlue: '#0f172a',
                         brandBlueLight: '#2563eb',
-                        brandCream: '#f8fafc'
+                        brandNav: '#1e293b'
                     },
                     fontFamily: {
                         sans: ['Hind Siliguri', 'sans-serif'],
@@ -34,207 +33,177 @@
             background-color: #f8fafc;
             font-family: 'Hind Siliguri', sans-serif;
         }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(30, 58, 138, 0.1);
-        }
     </style>
 </head>
 <body class="text-gray-800 antialiased min-h-screen flex flex-col justify-between">
 
-    <!-- 1. Header & Navigation -->
-    <header class="bg-brandBlue text-white sticky top-0 z-40 shadow-lg">
+    <!-- 1. Header Navigation -->
+    <header class="bg-brandNav text-white sticky top-0 z-40 shadow-md border-b border-slate-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
+            <div class="flex items-center justify-between h-16">
                 <!-- Logo -->
                 <div class="flex items-center space-x-3 cursor-pointer" onclick="showCategory('all')">
-                    <div class="w-12 h-12 bg-white text-brandBlue rounded-full flex items-center justify-center text-2xl font-bold shadow-md">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-xl font-bold shadow">
                         <i class="fa-solid fa-book-quran"></i>
                     </div>
                     <div>
-                        <h1 class="text-xl sm:text-2xl font-bold tracking-wide">ডিজিটাল অনলাইন লাইব্রেরি</h1>
-                        <p class="text-xs text-blue-200">ICS Book Reader & Digital Library</p>
+                        <h1 class="text-lg font-bold">ইসলামী অনলাইন লাইব্রেরী</h1>
+                        <p class="text-[10px] text-slate-300">ICS Syllabus Digital Reader</p>
                     </div>
                 </div>
 
                 <!-- Desktop Menu -->
-                <nav class="hidden md:flex space-x-2 text-sm font-medium">
-                    <button onclick="showCategory('all')" class="nav-btn px-3 py-2 rounded-md hover:bg-brandBlueDark transition">হোম</button>
-                    <button onclick="showCategory('school')" class="nav-btn px-3 py-2 rounded-md hover:bg-brandBlueDark transition">স্কুল সিলেবাস</button>
-                    <button onclick="showCategory('kormi')" class="nav-btn px-3 py-2 rounded-md hover:bg-brandBlueDark transition">কর্মী সিলেবাস</button>
-                    <button onclick="showCategory('sathi')" class="nav-btn px-3 py-2 rounded-md hover:bg-brandBlueDark transition">সাথী সিলেবাস</button>
-                    <button onclick="scrollToFooter()" class="nav-btn px-3 py-2 rounded-md hover:bg-brandBlueDark transition">যোগাযোগ</button>
+                <nav class="hidden md:flex space-x-1 text-sm font-medium">
+                    <button onclick="showCategory('all')" class="px-3 py-2 rounded-md hover:bg-slate-700 transition">হোম</button>
+                    <button onclick="showCategory('school')" class="px-3 py-2 rounded-md hover:bg-slate-700 transition">স্কুল সিলেবাস</button>
+                    <button onclick="showCategory('kormi')" class="px-3 py-2 rounded-md hover:bg-slate-700 transition">কর্মী সিলেবাস</button>
+                    <button onclick="showCategory('sathi')" class="px-3 py-2 rounded-md hover:bg-slate-700 transition">সাথী সিলেবাস</button>
+                    <button onclick="scrollToFooter()" class="px-3 py-2 rounded-md hover:bg-slate-700 transition">যোগাযোগ</button>
                 </nav>
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden">
-                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-md text-white hover:bg-brandBlueDark focus:outline-none">
-                        <i class="fa-solid fa-bars text-2xl"></i>
+                    <button onclick="toggleMobileMenu()" class="p-2 text-white hover:bg-slate-700 rounded-md">
+                        <i class="fa-solid fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Navigation Drawer -->
-        <div id="mobile-menu" class="hidden md:hidden bg-brandBlueDark px-4 pt-2 pb-4 space-y-2 border-t border-blue-800">
-            <button onclick="showCategory('all'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md hover:bg-brandBlue">হোম</button>
-            <button onclick="showCategory('school'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md hover:bg-brandBlue">স্কুল সিলেবাস</button>
-            <button onclick="showCategory('kormi'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md hover:bg-brandBlue">কর্মী সিলেবাস</button>
-            <button onclick="showCategory('sathi'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md hover:bg-brandBlue">সাথী সিলেবাস</button>
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 py-3 space-y-2">
+            <button onclick="showCategory('all'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded hover:bg-slate-800">হোম</button>
+            <button onclick="showCategory('school'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded hover:bg-slate-800">স্কুল সিলেবাস</button>
+            <button onclick="showCategory('kormi'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded hover:bg-slate-800">কর্মী সিলেবাস</button>
+            <button onclick="showCategory('sathi'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded hover:bg-slate-800">সাথী সিলেবাস</button>
         </div>
     </header>
 
     <!-- 2. Hero Section & Search Bar -->
-    <section class="bg-gradient-to-b from-brandBlue via-brandBlueDark to-slate-900 text-white py-12 px-4 shadow-inner">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl sm:text-4xl font-extrabold mb-3">অনলাইনে সরাসরি পড়ার ডিজিটাল লাইব্রেরি</h2>
-            <p class="text-blue-100 mb-8 text-sm sm:text-base">স্কুল, কর্মী ও সাথী সিলেবাসের যেকোনো বইতে ক্লিক করে ওয়েবসাইটেই সরাসরি পাঠ করুন</p>
+    <section class="bg-gradient-to-b from-brandNav to-slate-900 text-white py-12 px-4">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-2xl sm:text-4xl font-extrabold mb-2">অনলাইনে যেকোনো সিলেবাসের বই পড়ুন</h2>
+            <p class="text-slate-300 text-xs sm:text-sm mb-6">স্কুল, কর্মী ও সাথী সিলেবাসের নির্দিষ্ট বই বেছে নিন এবং সরাসরি অনলাইন রিডারে পাঠ করুন</p>
             
-            <!-- Search Box -->
-            <div class="relative max-w-2xl mx-auto shadow-2xl">
-                <input type="text" id="searchInput" onkeyup="filterBooks()" placeholder="বইয়ের নাম, লেখক বা বিষয় লিখে সার্চ করুন..." class="w-full py-4 pl-12 pr-4 text-gray-800 rounded-full focus:outline-none focus:ring-4 focus:ring-blue-400 text-lg placeholder-gray-400">
-                <div class="absolute left-4 top-4 text-gray-400 text-xl">
+            <div class="relative max-w-xl mx-auto">
+                <input type="text" id="searchInput" onkeyup="filterBooks()" placeholder="বইয়ের নাম বা লেখকের নাম দিয়ে সার্চ করুন..." class="w-full py-3.5 pl-11 pr-4 text-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow">
+                <div class="absolute left-3.5 top-3.5 text-gray-400 text-lg">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. Category Syllabus Grid Cards -->
+    <!-- 3. Syllabus Cards Section -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 z-10 relative">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- School Card -->
-            <div onclick="showCategory('school')" class="cursor-pointer glass-card rounded-2xl p-5 shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1 border-l-8 border-sky-600 flex items-center justify-between">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div onclick="showCategory('school')" class="bg-white p-4 rounded-xl shadow border border-slate-200 hover:shadow-lg transition cursor-pointer flex items-center justify-between">
                 <div>
-                    <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-sky-100 text-sky-800">প্রাথমিক ধাপ</span>
-                    <h3 class="text-xl font-bold text-gray-800 mt-1">স্কুল সিলেবাস</h3>
-                    <p class="text-xs text-gray-500 mt-1">ক্লিক করে বই পড়া শুরু করুন</p>
+                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-sky-100 text-sky-700">প্রাথমিক</span>
+                    <h3 class="text-lg font-bold text-gray-800 mt-1">স্কুল সিলেবাস</h3>
+                    <p class="text-xs text-gray-500">স্কুল পর্যায়ের পাঠ্যবইসমূহ</p>
                 </div>
-                <div class="w-12 h-12 bg-sky-100 text-sky-800 rounded-full flex items-center justify-center text-xl">
+                <div class="w-10 h-10 bg-sky-50 text-sky-600 rounded-lg flex items-center justify-center text-xl">
                     <i class="fa-solid fa-school"></i>
                 </div>
             </div>
 
-            <!-- Kormi Card -->
-            <div onclick="showCategory('kormi')" class="cursor-pointer glass-card rounded-2xl p-5 shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1 border-l-8 border-brandBlue flex items-center justify-between">
+            <div onclick="showCategory('kormi')" class="bg-white p-4 rounded-xl shadow border border-slate-200 hover:shadow-lg transition cursor-pointer flex items-center justify-between">
                 <div>
-                    <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-blue-100 text-brandBlue">দ্বিতীয় ধাপ</span>
-                    <h3 class="text-xl font-bold text-gray-800 mt-1">কর্মী সিলেবাস</h3>
-                    <p class="text-xs text-gray-500 mt-1">আকিদা ও দাওয়াতী পাঠ্যবই</p>
+                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-blue-100 text-blue-700">মধ্যম</span>
+                    <h3 class="text-lg font-bold text-gray-800 mt-1">কর্মী সিলেবাস</h3>
+                    <p class="text-xs text-gray-500">আকিদা, আদর্শ ও ইতিহাস</p>
                 </div>
-                <div class="w-12 h-12 bg-blue-100 text-brandBlue rounded-full flex items-center justify-center text-xl">
+                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center text-xl">
                     <i class="fa-solid fa-user-graduate"></i>
                 </div>
             </div>
 
-            <!-- Sathi Card -->
-            <div onclick="showCategory('sathi')" class="cursor-pointer glass-card rounded-2xl p-5 shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1 border-l-8 border-indigo-800 flex items-center justify-between">
+            <div onclick="showCategory('sathi')" class="bg-white p-4 rounded-xl shadow border border-slate-200 hover:shadow-lg transition cursor-pointer flex items-center justify-between">
                 <div>
-                    <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-900">উচ্চতর ধাপ</span>
-                    <h3 class="text-xl font-bold text-gray-800 mt-1">সাথী সিলেবাস</h3>
-                    <p class="text-xs text-gray-500 mt-1">কুরআন, হাদিস ও রাষ্ট্রচিন্তা</p>
+                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-indigo-100 text-indigo-700">উচ্চতর</span>
+                    <h3 class="text-lg font-bold text-gray-800 mt-1">সাথী সিলেবাস</h3>
+                    <p class="text-xs text-gray-500">কুরআন, হাদিস ও রাষ্ট্রচিন্তা</p>
                 </div>
-                <div class="w-12 h-12 bg-indigo-100 text-indigo-900 rounded-full flex items-center justify-center text-xl">
+                <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center text-xl">
                     <i class="fa-solid fa-book-bookmark"></i>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. Main Books Section -->
+    <!-- 4. Books Grid -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow">
-        <div class="flex flex-col sm:flex-row justify-between items-center mb-8 border-b pb-4">
-            <div>
-                <h3 id="categoryTitle" class="text-2xl font-bold text-brandBlueDark">সবগুলো সিলেবাস বই</h3>
-                <p class="text-sm text-gray-500 mt-1">যেকোনো বইয়ের ওপর ক্লিক করে ব্রাউজারেই সরাসরি পড়ুন</p>
-            </div>
-            <!-- Dynamic Filters -->
-            <div class="mt-4 sm:mt-0 flex flex-wrap gap-2">
-                <button onclick="filterSubCategory('all')" class="sub-filter-btn active bg-brandBlue text-white text-xs px-3 py-1.5 rounded-full shadow">সব বিষয়</button>
-                <button onclick="filterSubCategory('আকীদাহ')" class="sub-filter-btn bg-white text-gray-700 text-xs px-3 py-1.5 rounded-full border hover:bg-gray-100">আকীদাহ ও দর্শন</button>
-                <button onclick="filterSubCategory('ইসলামী আন্দোলন')" class="sub-filter-btn bg-white text-gray-700 text-xs px-3 py-1.5 rounded-full border hover:bg-gray-100">ইসলামী আন্দোলন</button>
-                <button onclick="filterSubCategory('ইতিহাস')" class="sub-filter-btn bg-white text-gray-700 text-xs px-3 py-1.5 rounded-full border hover:bg-gray-100">ইতিহাস ও সিরাত</button>
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-6 pb-3 border-b">
+            <h3 id="categoryTitle" class="text-xl font-bold text-gray-800">সবগুলো বই</h3>
+            <div class="mt-3 sm:mt-0 flex flex-wrap gap-2">
+                <button onclick="filterSubCategory('all')" class="sub-filter-btn active bg-blue-600 text-white text-xs px-3 py-1.5 rounded-md">সব বিষয়</button>
+                <button onclick="filterSubCategory('আকীদাহ')" class="sub-filter-btn bg-white text-gray-700 border text-xs px-3 py-1.5 rounded-md hover:bg-gray-50">আকীদাহ</button>
+                <button onclick="filterSubCategory('ইসলামী আন্দোলন')" class="sub-filter-btn bg-white text-gray-700 border text-xs px-3 py-1.5 rounded-md hover:bg-gray-50">ইসলামী আন্দোলন</button>
+                <button onclick="filterSubCategory('ইতিহাস')" class="sub-filter-btn bg-white text-gray-700 border text-xs px-3 py-1.5 rounded-md hover:bg-gray-50">ইতিহাস ও সিরাত</button>
             </div>
         </div>
 
-        <!-- Book Grid -->
-        <div id="booksGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-            <!-- Book Cards will be rendered here -->
+        <div id="booksGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+            <!-- Books Card Rendered dynamically -->
         </div>
 
-        <!-- No Results -->
-        <div id="noResults" class="hidden text-center py-16">
-            <i class="fa-solid fa-book-open text-5xl text-gray-300 mb-3"></i>
-            <p class="text-xl text-gray-500">আপনার তথ্য অনুযায়ী কোনো বই পাওয়া যায়নি!</p>
+        <div id="noResults" class="hidden text-center py-12">
+            <i class="fa-solid fa-circle-exclamation text-4xl text-gray-300 mb-2"></i>
+            <p class="text-gray-500">কোনো বই পাওয়া যায়নি!</p>
         </div>
     </main>
 
-    <!-- 5. Interactive Full Screen PDF Book Reader Modal -->
-    <div id="pdfModal" class="fixed inset-0 bg-black/90 z-50 hidden flex flex-col justify-between items-center">
-        <!-- Reader Navigation Bar -->
-        <div class="w-full bg-brandBlue text-white px-4 py-3 flex justify-between items-center shadow-xl">
-            <div class="flex items-center gap-3">
-                <div class="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center">
-                    <i class="fa-solid fa-book-open text-lg"></i>
-                </div>
-                <div>
-                    <h4 id="modalBookTitle" class="font-bold text-sm sm:text-base leading-tight">বইয়ের নাম</h4>
-                    <p id="modalBookAuthor" class="text-xs text-blue-200">লেখকের নাম</p>
-                </div>
+    <!-- 5. PDF Reader Modal -->
+    <div id="pdfModal" class="fixed inset-0 bg-black/80 z-50 hidden flex flex-col">
+        <div class="bg-slate-900 text-white px-4 py-3 flex justify-between items-center">
+            <div>
+                <h4 id="modalBookTitle" class="font-bold text-sm sm:text-base leading-tight">বইয়ের নাম</h4>
+                <p id="modalBookAuthor" class="text-xs text-slate-400">লেখকের নাম</p>
             </div>
-            
             <div class="flex items-center gap-2">
-                <a id="downloadPdfBtn" href="#" target="_blank" download class="bg-white text-brandBlue text-xs px-3 py-2 rounded-lg font-bold hover:bg-blue-50 flex items-center gap-1 shadow">
+                <a id="downloadPdfBtn" href="#" target="_blank" download class="bg-blue-600 hover:bg-blue-700 text-white text-xs px-3 py-1.5 rounded font-semibold flex items-center gap-1">
                     <i class="fa-solid fa-download"></i> <span class="hidden sm:inline">ডাউনলোড</span>
                 </a>
-                <button onclick="closePdfModal()" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-2 rounded-lg font-bold flex items-center gap-1 shadow">
-                    <i class="fa-solid fa-xmark text-sm"></i> বন্ধ করুন
+                <button onclick="closePdfModal()" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded font-semibold">
+                    <i class="fa-solid fa-xmark"></i> বন্ধ করুন
                 </button>
             </div>
         </div>
-        
-        <!-- Embedded PDF Viewer Screen -->
-        <div class="w-full flex-grow bg-gray-900 relative">
-            <iframe id="pdfIframe" src="" class="w-full h-full border-none" title="PDF Book Reader"></iframe>
+        <div class="flex-grow bg-slate-900">
+            <iframe id="pdfIframe" src="" class="w-full h-full border-none"></iframe>
         </div>
     </div>
 
-    <!-- 6. Footer Section -->
-    <footer id="footer" class="bg-brandBlueDark text-white pt-10 pb-6 border-t-4 border-brandBlue">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+    <!-- 6. Footer -->
+    <footer id="footer" class="bg-slate-900 text-slate-300 pt-8 pb-4 text-xs">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
             <div>
-                <h4 class="text-xl font-bold mb-3 flex items-center gap-2">
-                    <i class="fa-solid fa-book-quran text-blue-400"></i> অনলাইন লাইব্রেরি
-                </h4>
-                <p class="text-sm text-blue-200 leading-relaxed">
-                    অনলাইন ডিজিটাল সিলেবাসভিত্তিক বইসমূহ যেকোনো সময় সরাসরি ব্রাউজারে পড়ার জন্য উন্মুক্ত ডিজিটাল আর্কাইভ।
-                </p>
+                <h4 class="text-base font-bold text-white mb-2">অনলাইন লাইব্রেরী</h4>
+                <p class="leading-relaxed">সিলেবাসভিত্তিক সকল বই সরাসরি অনলাইনে পাঠ করার মুক্ত ই-লাইব্রেরি।</p>
             </div>
             <div>
-                <h5 class="text-lg font-semibold mb-3 border-b border-blue-900 pb-1">দ্রুত লিঙ্ক</h5>
-                <ul class="space-y-2 text-sm text-blue-200">
-                    <li><button onclick="showCategory('school')" class="hover:underline flex items-center gap-1"><i class="fa-solid fa-angle-right text-xs"></i> স্কুল সিলেবাস বই</button></li>
-                    <li><button onclick="showCategory('kormi')" class="hover:underline flex items-center gap-1"><i class="fa-solid fa-angle-right text-xs"></i> কর্মী সিলেবাস বই</button></li>
-                    <li><button onclick="showCategory('sathi')" class="hover:underline flex items-center gap-1"><i class="fa-solid fa-angle-right text-xs"></i> সাথী সিলেবাস বই</button></li>
+                <h5 class="font-semibold text-white mb-2">সিলেবাস</h5>
+                <ul class="space-y-1">
+                    <li><button onclick="showCategory('school')" class="hover:underline">স্কুল সিলেবাস</button></li>
+                    <li><button onclick="showCategory('kormi')" class="hover:underline">কর্মী সিলেবাস</button></li>
+                    <li><button onclick="showCategory('sathi')" class="hover:underline">সাথী সিলেবাস</button></li>
                 </ul>
             </div>
             <div>
-                <h5 class="text-lg font-semibold mb-3 border-b border-blue-900 pb-1">যোগাযোগ</h5>
-                <p class="text-sm text-blue-200 leading-relaxed">
-                    <i class="fa-solid fa-location-dot mr-2"></i> ঢাকা, বাংলাদেশ<br>
-                    <i class="fa-solid fa-envelope mr-2 mt-2"></i> contact@library.org
-                </p>
+                <h5 class="font-semibold text-white mb-2">যোগাযোগ</h5>
+                <p>ঢাকা, বাংলাদেশ</p>
+                <p class="mt-1">Email: info@icsbook.info</p>
             </div>
         </div>
-        <div class="text-center text-xs text-blue-300 border-t border-blue-900 pt-4">
-            &copy; ২০২৬ অনলাইন লাইব্রেরি | সর্বস্বত্ব সংরক্ষিত।
+        <div class="border-t border-slate-800 text-center pt-3 text-slate-500">
+            &copy; ২০২৬ ইসলামী অনলাইন লাইব্রেরী | সর্বস্বত্ব সংরক্ষিত।
         </div>
     </footer>
 
     <!-- JavaScript Application Logic -->
     <script>
-        // PDF Book Database
+        // বইয়ের তালিকা ও সঠিক লিঙ্ক (এখানে আপনার পছন্দ মতো PDF লিংক বসাতে পারবেন)
         const booksData = [
             {
                 id: 1,
@@ -243,8 +212,7 @@
                 syllabus: "school",
                 syllabusLabel: "স্কুল সিলেবাস",
                 category: "ইসলামী আন্দোলন",
-                bgGradient: "from-blue-600 to-indigo-900",
-                pdfUrl: "https://pdfobject.com/pdf/sample.pdf"
+                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
             },
             {
                 id: 2,
@@ -253,7 +221,6 @@
                 syllabus: "kormi",
                 syllabusLabel: "কর্মী সিলেবাস",
                 category: "আকীদাহ",
-                bgGradient: "from-slate-700 to-blue-900",
                 pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
             },
             {
@@ -263,8 +230,7 @@
                 syllabus: "kormi",
                 syllabusLabel: "কর্মী সিলেবাস",
                 category: "আকীদাহ",
-                bgGradient: "from-blue-700 to-slate-900",
-                pdfUrl: "https://pdfobject.com/pdf/sample.pdf"
+                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
             },
             {
                 id: 4,
@@ -273,7 +239,6 @@
                 syllabus: "kormi",
                 syllabusLabel: "কর্মী সিলেবাস",
                 category: "ইতিহাস",
-                bgGradient: "from-indigo-700 to-slate-900",
                 pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
             },
             {
@@ -283,8 +248,7 @@
                 syllabus: "school",
                 syllabusLabel: "স্কুল সিলেবাস",
                 category: "ইতিহাস",
-                bgGradient: "from-sky-700 to-blue-900",
-                pdfUrl: "https://pdfobject.com/pdf/sample.pdf"
+                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
             },
             {
                 id: 6,
@@ -293,7 +257,6 @@
                 syllabus: "school",
                 syllabusLabel: "স্কুল সিলেবাস",
                 category: "আকীদাহ",
-                bgGradient: "from-blue-800 to-indigo-950",
                 pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
             },
             {
@@ -303,8 +266,7 @@
                 syllabus: "sathi",
                 syllabusLabel: "সাথী সিলেবাস",
                 category: "ইতিহাস",
-                bgGradient: "from-indigo-800 to-slate-950",
-                pdfUrl: "https://pdfobject.com/pdf/sample.pdf"
+                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
             },
             {
                 id: 8,
@@ -313,7 +275,6 @@
                 syllabus: "sathi",
                 syllabusLabel: "সাথী সিলেবাস",
                 category: "ইতিহাস",
-                bgGradient: "from-slate-800 to-blue-950",
                 pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
             }
         ];
@@ -321,7 +282,6 @@
         let currentActiveSyllabus = 'all';
         let currentActiveSubCat = 'all';
 
-        // Render Books Cards
         function renderBooks(data) {
             const container = document.getElementById('booksGrid');
             const noResults = document.getElementById('noResults');
@@ -336,43 +296,32 @@
 
             data.forEach(book => {
                 const bookCard = document.createElement('div');
-                bookCard.className = "bg-white rounded-xl overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition transform hover:-translate-y-1 flex flex-col justify-between";
+                bookCard.className = "bg-white rounded-lg border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between";
                 
                 let tagColor = "bg-sky-100 text-sky-800";
-                if(book.syllabus === 'kormi') tagColor = "bg-blue-100 text-brandBlue";
-                if(book.syllabus === 'sathi') tagColor = "bg-indigo-100 text-indigo-900";
+                if(book.syllabus === 'kormi') tagColor = "bg-blue-100 text-blue-800";
+                if(book.syllabus === 'sathi') tagColor = "bg-indigo-100 text-indigo-800";
 
                 bookCard.innerHTML = `
-                    <div class="relative group cursor-pointer overflow-hidden p-3 bg-gray-50 flex justify-center" onclick="openPdfModal(${book.id})">
-                        <!-- Canvas Styled Book Cover -->
-                        <div class="w-full h-56 sm:h-60 rounded-lg bg-gradient-to-br ${book.bgGradient} shadow-lg p-4 flex flex-col justify-between text-white relative group-hover:scale-105 transition duration-300">
-                            <div>
-                                <i class="fa-solid fa-book-quran text-2xl opacity-80"></i>
-                                <h5 class="font-bold text-base mt-2 line-clamp-3 leading-snug">${book.title}</h5>
-                            </div>
-                            <div>
-                                <p class="text-[11px] opacity-90 border-t border-white/20 pt-1">${book.author}</p>
-                            </div>
-                            
-                            <!-- Hover Read Overlay -->
-                            <div class="absolute inset-0 bg-brandBlue/80 opacity-0 group-hover:opacity-100 transition flex flex-col items-center justify-center text-white font-semibold gap-1 rounded-lg">
-                                <i class="fa-solid fa-book-open text-3xl"></i>
-                                <span class="text-sm">বইটি পড়ুন</span>
-                            </div>
+                    <div class="p-3 bg-slate-100 flex flex-col items-center justify-center cursor-pointer relative group" onclick="openPdfModal(${book.id})">
+                        <div class="w-full h-44 bg-gradient-to-br from-slate-700 to-slate-900 rounded shadow p-3 flex flex-col justify-between text-white">
+                            <i class="fa-solid fa-book text-xl text-slate-400"></i>
+                            <h5 class="font-bold text-xs line-clamp-3">${book.title}</h5>
+                            <p class="text-[9px] text-slate-300 border-t border-slate-600 pt-1">${book.author}</p>
                         </div>
-                        <span class="absolute top-4 right-4 text-[10px] font-bold px-2 py-0.5 rounded shadow ${tagColor}">${book.syllabusLabel}</span>
+                        <span class="absolute top-2 right-2 text-[9px] font-semibold px-1.5 py-0.5 rounded ${tagColor}">${book.syllabusLabel}</span>
                     </div>
-                    <div class="p-3 flex flex-col flex-grow justify-between">
+                    <div class="p-3 flex flex-col justify-between flex-grow">
                         <div>
-                            <h4 class="font-bold text-gray-800 text-sm line-clamp-1 hover:text-brandBlue cursor-pointer" onclick="openPdfModal(${book.id})">${book.title}</h4>
-                            <p class="text-xs text-gray-500 mt-0.5">${book.author}</p>
+                            <h4 class="font-bold text-xs text-gray-800 line-clamp-1 cursor-pointer hover:text-blue-600" onclick="openPdfModal(${book.id})">${book.title}</h4>
+                            <p class="text-[10px] text-gray-500">${book.author}</p>
                         </div>
-                        <div class="mt-3 pt-2 border-t flex justify-between items-center text-xs">
-                            <button onclick="openPdfModal(${book.id})" class="bg-brandBlue text-white px-3 py-1.5 rounded font-bold hover:bg-brandBlueDark transition flex items-center gap-1">
+                        <div class="mt-2 pt-2 border-t flex justify-between items-center text-xs">
+                            <button onclick="openPdfModal(${book.id})" class="bg-blue-600 text-white px-2.5 py-1 rounded text-[11px] font-semibold hover:bg-blue-700 transition flex items-center gap-1">
                                 <i class="fa-solid fa-book-open"></i> পড়ুন
                             </button>
-                            <a href="${book.pdfUrl}" target="_blank" download class="text-gray-500 hover:text-brandBlue font-semibold p-1">
-                                <i class="fa-solid fa-download text-sm"></i>
+                            <a href="${book.pdfUrl}" target="_blank" download class="text-gray-400 hover:text-blue-600">
+                                <i class="fa-solid fa-download"></i>
                             </a>
                         </div>
                     </div>
@@ -381,7 +330,6 @@
             });
         }
 
-        // Category Navigation Filter
         function showCategory(type) {
             currentActiveSyllabus = type;
             const titleElement = document.getElementById('categoryTitle');
@@ -389,7 +337,7 @@
             if (type === 'school') titleElement.innerText = "স্কুল সিলেবাসের বইসমূহ";
             else if (type === 'kormi') titleElement.innerText = "কর্মী সিলেবাসের বইসমূহ";
             else if (type === 'sathi') titleElement.innerText = "সাথী সিলেবাসের বইসমূহ";
-            else titleElement.innerText = "সবগুলো সিলেবাস বই";
+            else titleElement.innerText = "সবগুলো বই";
 
             applyFilters();
         }
@@ -397,10 +345,10 @@
         function filterSubCategory(subCat) {
             currentActiveSubCat = subCat;
             document.querySelectorAll('.sub-filter-btn').forEach(btn => {
-                btn.classList.remove('active', 'bg-brandBlue', 'text-white');
+                btn.classList.remove('active', 'bg-blue-600', 'text-white');
                 btn.classList.add('bg-white', 'text-gray-700');
             });
-            event.target.classList.add('active', 'bg-brandBlue', 'text-white');
+            event.target.classList.add('active', 'bg-blue-600', 'text-white');
             event.target.classList.remove('bg-white', 'text-gray-700');
             applyFilters();
         }
@@ -420,7 +368,6 @@
             applyFilters();
         }
 
-        // Open Full Screen PDF Reader Modal
         function openPdfModal(bookId) {
             const book = booksData.find(b => b.id === bookId);
             if (!book) return;
@@ -429,9 +376,8 @@
             document.getElementById('modalBookAuthor').innerText = book.author;
             document.getElementById('downloadPdfBtn').href = book.pdfUrl;
             
-            // Render PDF via Native Embed / Mozilla Viewer Fallback
-            const pdfIframe = document.getElementById('pdfIframe');
-            pdfIframe.src = book.pdfUrl;
+            // PDF Direct Embed Viewer
+            document.getElementById('pdfIframe').src = book.pdfUrl;
 
             document.getElementById('pdfModal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
@@ -444,8 +390,7 @@
         }
 
         function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         }
 
         function scrollToFooter() {
