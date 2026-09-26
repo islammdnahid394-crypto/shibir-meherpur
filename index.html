@@ -3,82 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ইসলামী অনলাইন লাইব্রেরী - ICS Book Reader</title>
+    <title>ICS Book - ইসলামী অনলাইন পাঠাগার</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'SolaimanLipi', Arial, sans-serif;
         }
         body {
-            background-color: #0f172a;
-            color: #f8fafc;
+            background-color: #f4f6f9;
+            color: #333;
         }
         header {
-            background-color: #1e293b;
+            background-color: #1b5e20;
+            color: #fff;
             padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #334155;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .logo {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #38bdf8;
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
         }
-        nav a {
-            color: #94a3b8;
-            margin-left: 1rem;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        nav a:hover {
-            color: #ffffff;
+        header p {
+            font-size: 0.95rem;
+            opacity: 0.9;
         }
         .container {
             max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            margin: 20px auto;
+            padding: 0 15px;
         }
-        .filter-buttons {
+        .filter-section {
             display: flex;
+            justify-content: center;
             gap: 10px;
-            margin-bottom: 2rem;
             flex-wrap: wrap;
+            margin-bottom: 25px;
         }
         .filter-btn {
-            padding: 8px 16px;
-            background: #1e293b;
-            border: 1px solid #334155;
-            color: #e2e8f0;
-            border-radius: 6px;
+            background-color: #fff;
+            border: 1px solid #2e7d32;
+            color: #2e7d32;
+            padding: 8px 18px;
+            border-radius: 20px;
             cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
         }
         .filter-btn.active, .filter-btn:hover {
-            background: #2563eb;
+            background-color: #2e7d32;
             color: #fff;
-            border-color: #2563eb;
         }
         .book-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
         }
         .book-card {
-            background-color: #1e293b;
+            background: #fff;
             border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             overflow: hidden;
-            border: 1px solid #334155;
             display: flex;
             flex-direction: column;
+            transition: transform 0.2s ease;
         }
-        .cover-wrapper {
-            position: relative;
+        .book-card:hover {
+            transform: translateY(-4px);
+        }
+        .cover-container {
             width: 100%;
-            height: 280px;
-            background-color: #334155;
+            height: 250px;
+            background-color: #e8f5e9;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -88,18 +87,25 @@
             height: 100%;
             object-fit: cover;
         }
-        .badge {
+        .fallback-cover {
+            display: none;
+            text-align: center;
+            padding: 15px;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        .category-badge {
             position: absolute;
             top: 10px;
-            right: 10px;
-            background: rgba(37, 99, 235, 0.9);
+            left: 10px;
+            background-color: rgba(46, 125, 50, 0.9);
             color: #fff;
+            padding: 3px 8px;
             font-size: 0.75rem;
-            padding: 4px 8px;
             border-radius: 4px;
         }
-        .book-info {
-            padding: 1rem;
+        .book-details {
+            padding: 15px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -108,36 +114,34 @@
         .book-title {
             font-size: 1rem;
             font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: #f1f5f9;
+            color: #1b5e20;
+            margin-bottom: 5px;
         }
         .book-author {
             font-size: 0.85rem;
-            color: #94a3b8;
-            margin-bottom: 1rem;
+            color: #666;
+            margin-bottom: 15px;
         }
-        .btn-group {
+        .action-btns {
             display: flex;
             gap: 8px;
         }
         .btn {
             flex: 1;
-            padding: 8px;
-            border: none;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            cursor: pointer;
             text-align: center;
+            padding: 7px 0;
             text-decoration: none;
+            font-size: 0.85rem;
+            border-radius: 4px;
             font-weight: bold;
         }
         .btn-read {
-            background-color: #2563eb;
+            background-color: #2e7d32;
             color: #fff;
         }
         .btn-download {
-            background-color: #334155;
-            color: #e2e8f0;
+            background-color: #e0e0e0;
+            color: #333;
         }
         .btn:hover {
             opacity: 0.9;
@@ -147,84 +151,86 @@
 <body>
 
     <header>
-        <div class="logo">ইসলামী অনলাইন লাইব্রেরী</div>
-        <nav>
-            <a href="#">হোম</a>
-            <a href="#">স্কুল সিলেবাস</a>
-            <a href="#">কর্মী সিলেবাস</a>
-            <a href="#">সাথী সিলেবাস</a>
-        </nav>
+        <h1>ICS Book Library</h1>
+        <p>পাঠ্যসূচী ও সিলেবাসের সকল বইয়ের অনলাইন সংগ্রহ</p>
     </header>
 
     <div class="container">
-        <!-- ফিল্টার বাটন -->
-        <div class="filter-buttons">
-            <button class="filter-btn active" onclick="filterBooks('all')">সব বই</button>
-            <button class="filter-btn" onclick="filterBooks('স্কুল সিলেবাস')">স্কুল সিলেবাস</button>
-            <button class="filter-btn" onclick="filterBooks('কর্মী সিলেবাস')">কর্মী সিলেবাস</button>
-            <button class="filter-btn" onclick="filterBooks('সাথী সিলেবাস')">সাথী সিলেবাস</button>
+        <!-- সিলেবাস ফিল্টার -->
+        <div class="filter-section">
+            <button class="filter-btn active" onclick="filterCategory('all')">সকল বই</button>
+            <button class="filter-btn" onclick="filterCategory('সমর্থক')">সমর্থক সিলেবাস</button>
+            <button class="filter-btn" onclick="filterCategory('কর্মী')">কর্মী সিলেবাস</button>
+            <button class="filter-btn" onclick="filterCategory('সাথী')">সাথী সিলেবাস</button>
+            <button class="filter-btn" onclick="filterCategory('সদস্য')">সদস্য সিলেবাস</button>
         </div>
 
-        <!-- বইয়ের তালিকা -->
+        <!-- বইয়ের লিস্ট -->
         <div class="book-grid" id="bookGrid"></div>
     </div>
 
     <script>
-        // সব বইয়ের ডেটাবেজ
+        // সিলেবাসের বইয়ের লিস্ট (এখানে সব বই যোগ করতে পারবেন)
         const books = [
-            {
-                title: "সাহসী মানুষের গল্প",
-                author: "মোশাররফ হোসেন খান",
-                category: "স্কুল সিলেবাস",
-                cover: "images/sahasi-manuser-golpo.jpg", // ইমেজের পাথ
-                pdf: "pdf/sahasi-manuser-golpo.pdf"       // পিডিএফ ফাইল পাথ
-            },
             {
                 title: "ইসলামের প্রাথমিক পরিচয়",
                 author: "বাংলাদেশ দাওয়াহ সার্কেল",
-                category: "স্কুল সিলেবাস",
-                cover: "images/islamer-prathamik-porichoy.jpg",
-                pdf: "pdf/islamer-prathamik-porichoy.pdf"
+                category: "সমর্থক",
+                cover: "images/islamer-porichoy.jpg",
+                pdf: "pdf/islamer-porichoy.pdf"
+            },
+            {
+                title: "সাহসী মানুষের গল্প",
+                author: "মোশাররফ হোসেন খান",
+                category: "সমর্থক",
+                cover: "images/sahasi-manus.jpg",
+                pdf: "pdf/sahasi-manus.pdf"
+            },
+            {
+                title: "ইসলামী দাওয়াত ও কর্মী",
+                author: "মাওলানা মওদূদী",
+                category: "কর্মী",
+                cover: "images/dawat-o-kormi.jpg",
+                pdf: "pdf/dawat-o-kormi.pdf"
             },
             {
                 title: "রাসূলুল্লাহর বিপ্লবী জীবন",
-                author: "মাওলানা মুহা. আবদুর রাজ্জাক",
-                category: "সাথী সিলেবাস",
-                cover: "images/rasulullahs-biplobi-jibon.jpg",
-                pdf: "pdf/rasulullahs-biplobi-jibon.pdf"
+                author: "আব্দুর রাজ্জাক",
+                category: "সাথী",
+                cover: "images/biplobi-jibon.jpg",
+                pdf: "pdf/biplobi-jibon.pdf"
             },
             {
-                title: "মুসলমানদের পতনে বিশ্ব যা হারালো",
-                author: "আবুল হাসান আলী নদভী",
-                category: "সাথী সিলেবাস",
-                cover: "images/musalmandder-potone.jpg",
-                pdf: "pdf/musalmandder-potone.pdf"
+                title: "ইসলামী রেনেসাঁ আন্দোলন",
+                author: "মাওলানা মওদূদী",
+                category: "সদস্য",
+                cover: "images/renesa-andolon.jpg",
+                pdf: "pdf/renesa-andolon.pdf"
             }
-            // আরও নতুন বই যোগ করতে এখানে একই ফরম্যাটে অবজেক্ট যোগ করুন
         ];
 
-        function renderBooks(data) {
+        function displayBooks(items) {
             const grid = document.getElementById('bookGrid');
             grid.innerHTML = '';
 
-            data.forEach(book => {
+            items.forEach(book => {
                 const card = document.createElement('div');
                 card.className = 'book-card';
                 card.innerHTML = `
-                    <div class="cover-wrapper">
-                        <span class="badge">${book.category}</span>
+                    <div class="cover-container">
+                        <span class="category-badge">${book.category}</span>
                         <img class="cover-img" src="${book.cover}" alt="${book.title}" 
                              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                        <div style="display:none; padding:10px; text-align:center; color:#94a3b8;">
+                        <div class="fallback-cover">
                             📖<br>${book.title}
                         </div>
                     </div>
-                    <div class="book-info">
+                    <div class="book-details">
                         <div>
                             <div class="book-title">${book.title}</div>
                             <div class="book-author">${book.author}</div>
                         </div>
-                        <div class="btn-group">
+                        <div class="action-btns">
                             <a href="${book.pdf}" target="_blank" class="btn btn-read">পড়ুন</a>
                             <a href="${book.pdf}" download class="btn btn-download">ডাউনলোড</a>
                         </div>
@@ -234,20 +240,20 @@
             });
         }
 
-        function filterBooks(category) {
+        function filterCategory(cat) {
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
-            if (category === 'all') {
-                renderBooks(books);
+            if(cat === 'all') {
+                displayBooks(books);
             } else {
-                const filtered = books.filter(b => b.category === category);
-                renderBooks(filtered);
+                const filtered = books.filter(b => b.category === cat);
+                displayBooks(filtered);
             }
         }
 
-        // পেজ লোড হলে বই প্রদর্শন
-        renderBooks(books);
+        // পেজ লোডে বই প্রর্দশন
+        displayBooks(books);
     </script>
 </body>
 </html>
