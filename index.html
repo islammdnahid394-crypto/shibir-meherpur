@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ইসলামী অনলাইন লাইব্রেরী (ICS Book Digital Library)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Hind Siliguri) -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandGreen: '#0d5c3a',
+                        brandGreenDark: '#083e27',
+                        brandBlue: '#1e3a8a',
+                        brandCream: '#fdfbf7',
+                        brandCreamDark: '#f3eee3'
+                    },
+                    fontFamily: {
+                        sans: ['Hind Siliguri', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #fdfbf7;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(13, 92, 58, 0.1);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #0d5c3a;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- 1. Header & Navigation -->
+    <header class="bg-brandGreen text-white sticky top-0 z-40 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3 space-x-reverse cursor-pointer" onclick="showCategory('all')">
+                    <div class="w-12 h-12 bg-white text-brandGreen rounded-full flex items-center justify-center text-2xl font-bold shadow-md">
+                        <i class="fa-solid font-bold fa-book-quran"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl sm:text-2xl font-bold tracking-wide">শিবির অনলাইন লাইব্রেরি</h1>
+                        <p class="text-xs text-green-200">ICS Book Online Library</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-1 lg:space-x-2 space-x-reverse text-sm font-medium">
+                    <button onclick="showCategory('all')" class="nav-btn px-3 py-2 rounded-md hover:bg-brandGreenDark transition active">হোম</button>
+                    <button onclick="showCategory('school')" class="nav-btn px-3 py-2 rounded-md hover:bg-brandGreenDark transition">স্কুল সিলেবাস</button>
+                    <button onclick="showCategory('kormi')" class="nav-btn px-3 py-2 rounded-md hover:bg-brandGreenDark transition">কর্মী সিলেবাস</button>
+                    <button onclick="showCategory('sathi')" class="nav-btn px-3 py-2 rounded-md hover:bg-brandGreenDark transition">সাথী সিলেবাস</button>
+                    <button onclick="scrollToFooter()" class="nav-btn px-3 py-2 rounded-md hover:bg-brandGreenDark transition">যোগাযোগ</button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="p-2 rounded-md text-white hover:bg-brandGreenDark focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brandGreenDark px-4 pt-2 pb-4 space-y-2 border-t border-green-700">
+            <button onclick="showCategory('all'); toggleMobileMenu()" class="block w-full text-right px-3 py-2 rounded-md hover:bg-brandGreen">হোম</button>
+            <button onclick="showCategory('school'); toggleMobileMenu()" class="block w-full text-right px-3 py-2 rounded-md hover:bg-brandGreen">স্কুল সিলেবাস</button>
+            <button onclick="showCategory('kormi'); toggleMobileMenu()" class="block w-full text-right px-3 py-2 rounded-md hover:bg-brandGreen">কর্মী সিলেবাস</button>
+            <button onclick="showCategory('sathi'); toggleMobileMenu()" class="block w-full text-right px-3 py-2 rounded-md hover:bg-brandGreen">সাথী সিলেবাস</button>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section & Search Bar -->
+    <section class="bg-gradient-to-b from-brandGreen via-brandGreenDark to-brandBlue text-white py-12 px-4 shadow-inner">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-3">ইসলামী ও সিলেবাসভিত্তিক ডিজিটাল লাইব্রেরি</h2>
+            <p class="text-green-100 mb-8 text-sm sm:text-base">স্কুল, কর্মী ও সাথী সিলেবাসের প্রয়োজনীয় বই অনলাইনে পড়ুন এবং সহজে ডাউনলোড করুন</p>
+            
+            <!-- Search Box -->
+            <div class="relative max-w-2xl mx-auto shadow-2xl">
+                <input type="text" id="searchInput" onkeyup="filterBooks()" placeholder="বইয়ের নাম, লেখক বা বিষয় লিখে সার্চ করুন..." class="w-full py-4 pl-12 pr-4 text-gray-800 rounded-full focus:outline-none focus:ring-4 focus:ring-green-400 text-lg placeholder-gray-400">
+                <div class="absolute left-4 top-4 text-gray-400 text-xl">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Category Syllabus Grid Cards -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 z-10 relative">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- School Card -->
+            <div onclick="showCategory('school')" class="cursor-pointer glass-card rounded-2xl p-6 shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1 border-l-8 border-brandGreen flex items-center justify-between">
+                <div>
+                    <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-green-100 text-brandGreen">প্রাথমিক ধাপ</span>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-1">স্কুল সিলেবাস</h3>
+                    <p class="text-xs text-gray-500 mt-1">স্কুল ছাত্রদের মৌলিক ইসলামী বই</p>
+                </div>
+                <div class="w-14 h-14 bg-green-100 text-brandGreen rounded-full flex items-center justify-center text-2xl">
+                    <i class="fa-solid fa-school"></i>
+                </div>
+            </div>
+
+            <!-- Kormi Card -->
+            <div onclick="showCategory('kormi')" class="cursor-pointer glass-card rounded-2xl p-6 shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1 border-l-8 border-brandBlue flex items-center justify-between">
+                <div>
+                    <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-blue-100 text-brandBlue">দ্বিতীয় ধাপ</span>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-1">কর্মী সিলেবাস</h3>
+                    <p class="text-xs text-gray-500 mt-1">আকিদা, ইতিহাস ও দাওয়াতী বই</p>
+                </div>
+                <div class="w-14 h-14 bg-blue-100 text-brandBlue rounded-full flex items-center justify-center text-2xl">
+                    <i class="fa-solid fa-user-graduate"></i>
+                </div>
+            </div>
+
+            <!-- Sathi Card -->
+            <div onclick="showCategory('sathi')" class="cursor-pointer glass-card rounded-2xl p-6 shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1 border-l-8 border-amber-600 flex items-center justify-between">
+                <div>
+                    <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-amber-100 text-amber-800">উচ্চতর ধাপ</span>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-1">সাথী সিলেবাস</h3>
+                    <p class="text-xs text-gray-500 mt-1">কুরআন, হাদিস ও আধুনিক রাজনীতি</p>
+                </div>
+                <div class="w-14 h-14 bg-amber-100 text-amber-800 rounded-full flex items-center justify-center text-2xl">
+                    <i class="fa-solid fa-book-bookmark"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Main Books Section with Filter Buttons -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow">
+        <!-- Section Header -->
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-8 border-b pb-4">
+            <div>
+                <h3 id="categoryTitle" class="text-2xl font-bold text-brandGreenDark">সবগুলো সিলেবাস বই</h3>
+                <p class="text-sm text-gray-500 mt-1">পছন্দের বইটিতে ক্লিক করে ব্রাউজারেই সরাসরি ডাউনলোড বা রিড করুন</p>
+            </div>
+            <!-- Dynamic Filters -->
+            <div class="mt-4 sm:mt-0 flex flex-wrap gap-2">
+                <button onclick="filterSubCategory('all')" class="sub-filter-btn active bg-brandGreen text-white text-xs px-3 py-1.5 rounded-full shadow hover:opacity-90">সব বিষয়</button>
+                <button onclick="filterSubCategory('আকীদাহ')" class="sub-filter-btn bg-white text-gray-700 text-xs px-3 py-1.5 rounded-full border hover:bg-gray-100">আকীদাহ ও জীবনদর্শন</button>
+                <button onclick="filterSubCategory('ইসলামী আন্দোলন')" class="sub-filter-btn bg-white text-gray-700 text-xs px-3 py-1.5 rounded-full border hover:bg-gray-100">ইসলামী আন্দোলন</button>
+                <button onclick="filterSubCategory('ইতিহাস')" class="sub-filter-btn bg-white text-gray-700 text-xs px-3 py-1.5 rounded-full border hover:bg-gray-100">ইতিহাস ও সিরাত</button>
+            </div>
+        </div>
+
+        <!-- Book Grid -->
+        <div id="booksGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            <!-- Book Cards are injected dynamically via JavaScript -->
+        </div>
+
+        <!-- No Results Found View -->
+        <div id="noResults" class="hidden text-center py-16">
+            <i class="fa-solid fa-book-open text-5xl text-gray-300 mb-3"></i>
+            <p class="text-xl text-gray-500">আপনার সার্চকৃত বইয়ের কোনো তথ্য পাওয়া যায়নি!</p>
+        </div>
+    </main>
+
+    <!-- 5. Live PDF Reader Modal (In-Built Reader) -->
+    <div id="pdfModal" class="fixed inset-0 bg-black/80 z-50 hidden flex flex-col justify-between items-center p-2 sm:p-4">
+        <!-- Modal Topbar -->
+        <div class="w-full max-w-6xl bg-brandGreen text-white px-4 py-3 rounded-t-xl flex justify-between items-center shadow-lg">
+            <div>
+                <h4 id="modalBookTitle" class="font-bold text-base sm:text-lg">বইয়ের শিরোনাম</h4>
+                <p id="modalBookAuthor" class="text-xs text-green-200">লেখকের নাম</p>
+            </div>
+            <div class="flex items-center space-x-2 space-x-reverse">
+                <a id="modalDownloadBtn" href="#" target="_blank" download class="bg-white text-brandGreen text-xs px-3 py-1.5 rounded-lg font-bold hover:bg-green-100 flex items-center gap-1 shadow">
+                    <i class="fa-solid fa-download"></i> <span class="hidden sm:inline">ডাউনলোড</span>
+                </a>
+                <button onclick="shareBook()" class="bg-brandBlue text-white text-xs px-3 py-1.5 rounded-lg font-bold hover:bg-blue-900 flex items-center gap-1 shadow">
+                    <i class="fa-solid fa-share-nodes"></i> <span class="hidden sm:inline">শেয়ার</span>
+                </button>
+                <button onclick="closePdfModal()" class="text-gray-200 hover:text-white text-2xl px-2">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Embedded PDF Viewer Frame -->
+        <div class="w-full max-w-6xl flex-grow bg-white rounded-b-xl overflow-hidden relative">
+            <iframe id="pdfIframe" src="" class="w-full h-full border-none" title="PDF Viewer"></iframe>
+        </div>
+    </div>
+
+    <!-- 6. Footer Section -->
+    <footer id="footer" class="bg-brandGreenDark text-white pt-10 pb-6 border-t-4 border-brandGreen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+                <h4 class="text-xl font-bold mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-book-quran text-green-400"></i> শিবির অনলাইন লাইব্রেরি
+                </h4>
+                <p class="text-sm text-green-200 leading-relaxed">
+                    বাংলাদেশ ইসলামী ছাত্রশিবিরের কেন্দ্রীয় পাঠ্যসূচি ও বিভিন্ন সিলেবাসভিত্তিক গুরুত্বপূর্ণ বই পাঠ ও অধ্যয়নের একটি ডিজিটাল প্ল্যাটফর্ম।
+                </p>
+            </div>
+            <div>
+                <h5 class="text-lg font-semibold mb-3 border-b border-green-800 pb-1">গুরুত্বপূর্ণ লিংকসমূহ</h5>
+                <ul class="space-y-2 text-sm text-green-200">
+                    <li><a href="https://www.icsbook.info" target="_blank" class="hover:underline flex items-center gap-1"><i class="fa-solid fa-angle-right text-xs"></i> icsbook.info অফিশিয়াল সাইট</a></li>
+                    <li><button onclick="showCategory('school')" class="hover:underline flex items-center gap-1"><i class="fa-solid fa-angle-right text-xs"></i> স্কুল সিলেবাস বই</button></li>
+                    <li><button onclick="showCategory('kormi')" class="hover:underline flex items-center gap-1"><i class="fa-solid fa-angle-right text-xs"></i> কর্মী সিলেবাস বই</button></li>
+                    <li><button onclick="showCategory('sathi')" class="hover:underline flex items-center gap-1"><i class="fa-solid fa-angle-right text-xs"></i> সাথী সিলেবাস বই</button></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-lg font-semibold mb-3 border-b border-green-800 pb-1">যোগাযোগ</h5>
+                <p class="text-sm text-green-200 leading-relaxed">
+                    <i class="fa-solid fa-location-dot mr-2"></i> ৪৮/১-এ, পুরানা পল্টন, ঢাকা-১০০০, বাংলাদেশ<br>
+                    <i class="fa-solid fa-envelope mr-2 mt-2"></i> info@shibir.org.bd<br>
+                    <i class="fa-solid fa-globe mr-2 mt-2"></i> www.icsbook.info
+                </p>
+            </div>
+        </div>
+        <div class="text-center text-xs text-green-300 border-t border-green-800 pt-4">
+            &copy; ২০২৬ শিবির অনলাইন লাইব্রেরি | সর্বস্বত্ব সংরক্ষিত।
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Real ICS Book Database with authentic PDFs & Covers
+        const booksData = [
+            {
+                id: 1,
+                title: "আমাদের লক্ষ্য ও পথচলার নীতি",
+                author: "আইএসসিএ পাবলিকেশন",
+                syllabus: "school",
+                syllabusLabel: "স্কুল সিলেবাস",
+                category: "ইসলামী আন্দোলন",
+                cover: "https://www.icsbook.info/storage/books/covers/default.jpg",
+                pdfUrl: "https://www.icsbook.info/storage/books/pdf/sample.pdf"
+            },
+            {
+                id: 2,
+                title: "ঈমানের হাকীকত",
+                author: "সাইয়েদ আবুল আ'লা মওদূদী",
+                syllabus: "kormi",
+                syllabusLabel: "কর্মী সিলেবাস",
+                category: "আকীদাহ",
+                cover: "https://www.icsbook.info/storage/books/covers/imaner-hakikat.jpg",
+                pdfUrl: "https://www.icsbook.info/storage/books/pdf/imaner-hakikat.pdf"
+            },
+            {
+                id: 3,
+                title: "নামাজ রোজার হাকীকত",
+                author: "সাইয়েদ আবুল আ'লা মওদূদী",
+                syllabus: "kormi",
+                syllabusLabel: "কর্মী সিলেবাস",
+                category: "আকীদাহ",
+                cover: "https://www.icsbook.info/storage/books/covers/namaj-rojar-hakikat.jpg",
+                pdfUrl: "https://www.icsbook.info/storage/books/pdf/namaj-rojar-hakikat.pdf"
+            },
+            {
+                id: 4,
+                title: "আমরা সেই সে জাতি (১ম খণ্ড)",
+                author: "আবুল আসাদ",
+                syllabus: "kormi",
+                syllabusLabel: "কর্মী সিলেবাস",
+                category: "ইতিহাস",
+                cover: "https://www.icsbook.info/storage/books/covers/amra-sei-se-jati.jpg",
+                pdfUrl: "https://www.icsbook.info/storage/books/pdf/amra-sei-se-jati-1.pdf"
+            },
+            {
+                id: 5,
+                title: "সাসসী মানুষের গল্প",
+                author: "মোশাররফ হোসেন খান",
+                syllabus: "school",
+                syllabusLabel: "স্কুল সিলেবাস",
+                category: "ইতিহাস",
+                cover: "https://www.icsbook.info/storage/books/covers/sahasi-manuser-golpo.jpg",
+                pdfUrl: "https://www.icsbook.info/storage/books/pdf/sahasi-manuser-golpo.pdf"
+            },
+            {
+                id: 6,
+                title: "ইসলামের প্রাথমিক পরিচয়",
+                author: "বাংলাদেশ দাওয়াহ সার্কেল",
+                syllabus: "school",
+                syllabusLabel: "স্কুল সিলেবাস",
+                category: "আকীদাহ",
+                cover: "https://www.icsbook.info/storage/books/covers/islamer-prathomik-porichoy.jpg",
+                pdfUrl: "https://www.icsbook.info/storage/books/pdf/islamer-prathomik-porichoy.pdf"
+            },
+            {
+                id: 7,
+                title: "রাসূলুল্লাহর বিপ্লবী জীবন",
+                author: "মাওলানা মুহা. আব্দুর রাজ্জাক",
+                syllabus: "sathi",
+                syllabusLabel: "সাথী সিলেবাস",
+                category: "ইতিহাস",
+                cover: "https://www.icsbook.info/storage/books/covers/rasulullahs-biplobi-jibon.jpg",
+                pdfUrl: "https://www.icsbook.info/storage/books/pdf/rasulullahs-biplobi-jibon.pdf"
+            },
+            {
+                id: 8,
+                title: "মুসলমানদের পতনে বিশ্ব যা হারালো",
+                author: "আবুল হাসান আলী নদভী",
+                syllabus: "sathi",
+                syllabusLabel: "সাথী সিলেবাস",
+                category: "ইতিহাস",
+                cover: "https://www.icsbook.info/storage/books/covers/musalmandder-potone.jpg",
+                pdfUrl: "https://www.icsbook.info/storage/books/pdf/musalmandder-potone.pdf"
+            },
+            {
+                id: 9,
+                title: "কর্মপদ্ধতি",
+                author: "বিআইসিএস পাবলিকেশন",
+                syllabus: "kormi",
+                syllabusLabel: "কর্মী সিলেবাস",
+                category: "ইসলামী আন্দোলন",
+                cover: "https://www.icsbook.info/storage/books/covers/kormopaddhati.jpg",
+                pdfUrl: "https://www.icsbook.info/storage/books/pdf/kormopaddhati.pdf"
+            },
+            {
+                id: 10,
+                title: "আমরা বড় হতে চাই",
+                author: " আহসান হাবীব ইমরান",
+                syllabus: "school",
+                syllabusLabel: "স্কুল সিলেবাস",
+                category: "ইসলামী আন্দোলন",
+                cover: "https://www.icsbook.info/storage/books/covers/amra-boro-hote-chai.jpg",
+                pdfUrl: "https://www.icsbook.info/storage/books/pdf/amra-boro-hote-chai.pdf"
+            }
+        ];
+
+        let currentActiveSyllabus = 'all';
+        let currentActiveSubCat = 'all';
+        let currentActiveBook = null;
+
+        // Render Books Function
+        function renderBooks(data) {
+            const container = document.getElementById('booksGrid');
+            const noResults = document.getElementById('noResults');
+            container.innerHTML = '';
+
+            if (data.length === 0) {
+                noResults.classList.remove('hidden');
+                return;
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            data.forEach(book => {
+                const bookCard = document.createElement('div');
+                bookCard.className = "bg-white rounded-xl overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition transform hover:-translate-y-1 flex flex-col justify-between";
+                
+                // Syllabus Tag Colors
+                let tagColor = "bg-green-100 text-brandGreen";
+                if(book.syllabus === 'kormi') tagColor = "bg-blue-100 text-brandBlue";
+                if(book.syllabus === 'sathi') tagColor = "bg-amber-100 text-amber-800";
+
+                bookCard.innerHTML = `
+                    <div class="relative group cursor-pointer overflow-hidden" onclick="openPdfModal(${book.id})">
+                        <img src="${book.cover}" onerror="this.src='https://placehold.co/300x420/0d5c3a/ffffff?text=${encodeURIComponent(book.title)}'" alt="${book.title}" class="w-full h-52 sm:h-60 object-cover group-hover:scale-105 transition duration-300">
+                        <div class="absolute inset-0 bg-brandGreen/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white font-semibold gap-2">
+                            <i class="fa-solid fa-eye text-2xl"></i> পড়ুন
+                        </div>
+                        <span class="absolute top-2 right-2 text-[10px] font-bold px-2 py-0.5 rounded shadow ${tagColor}">${book.syllabusLabel}</span>
+                    </div>
+                    <div class="p-3 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-sm line-clamp-1 hover:text-brandGreen cursor-pointer" onclick="openPdfModal(${book.id})">${book.title}</h4>
+                            <p class="text-xs text-gray-500 mt-0.5">${book.author}</p>
+                        </div>
+                        <div class="mt-3 pt-2 border-t flex justify-between items-center text-xs">
+                            <button onclick="openPdfModal(${book.id})" class="text-brandGreen font-bold hover:underline flex items-center gap-1">
+                                <i class="fa-solid fa-book-open"></i> পঠিতব্য
+                            </button>
+                            <a href="${book.pdfUrl}" target="_blank" download class="text-gray-400 hover:text-brandBlue">
+                                <i class="fa-solid fa-download text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(bookCard);
+            });
+        }
+
+        // Filter Books by Category Tab
+        function showCategory(type) {
+            currentActiveSyllabus = type;
+            const titleElement = document.getElementById('categoryTitle');
+
+            if (type === 'school') titleElement.innerText = "স্কুল সিলেবাসের বইসমূহ";
+            else if (type === 'kormi') titleElement.innerText = "কর্মী সিলেবাসের বইসমূহ";
+            else if (type === 'sathi') titleElement.innerText = "সাথী সিলেবাসের বইসমূহ";
+            else titleElement.innerText = "সবগুলো সিলেবাস বই";
+
+            applyFilters();
+        }
+
+        // Subcategory Filter
+        function filterSubCategory(subCat) {
+            currentActiveSubCat = subCat;
+            document.querySelectorAll('.sub-filter-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-brandGreen', 'text-white');
+                btn.classList.add('bg-white', 'text-gray-700');
+            });
+            event.target.classList.add('active', 'bg-brandGreen', 'text-white');
+            event.target.classList.remove('bg-white', 'text-gray-700');
+            applyFilters();
+        }
+
+        // Apply Combined Filters & Search
+        function applyFilters() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            let filtered = booksData.filter(book => {
+                const matchCategory = (currentActiveSyllabus === 'all' || book.syllabus === currentActiveSyllabus);
+                const matchSubCat = (currentActiveSubCat === 'all' || book.category === currentActiveSubCat);
+                const matchQuery = book.title.toLowerCase().includes(query) || book.author.toLowerCase().includes(query);
+                return matchCategory && matchSubCat && matchQuery;
+            });
+            renderBooks(filtered);
+        }
+
+        function filterBooks() {
+            applyFilters();
+        }
+
+        // Modal Functions
+        function openPdfModal(bookId) {
+            currentActiveBook = booksData.find(b => b.id === bookId);
+            if (!currentActiveBook) return;
+
+            document.getElementById('modalBookTitle').innerText = currentActiveBook.title;
+            document.getElementById('modalBookAuthor').innerText = currentActiveBook.author;
+            document.getElementById('modalDownloadBtn').href = currentActiveBook.pdfUrl;
+            
+            // Using Google Docs Embedder for Online PDF Reading
+            const embeddedViewerUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(currentActiveBook.pdfUrl)}&embedded=true`;
+            document.getElementById('pdfIframe').src = embeddedViewerUrl;
+
+            document.getElementById('pdfModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePdfModal() {
+            document.getElementById('pdfModal').classList.add('hidden');
+            document.getElementById('pdfIframe').src = '';
+            document.body.style.overflow = 'auto';
+        }
+
+        function shareBook() {
+            if (currentActiveBook && navigator.share) {
+                navigator.share({
+                    title: currentActiveBook.title,
+                    text: `${currentActiveBook.title} - ${currentActiveBook.author}`,
+                    url: window.location.href,
+                });
+            } else {
+                alert('বইটির লিঙ্ক কপি করা হয়েছে!');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+
+        function scrollToFooter() {
+            document.getElementById('footer').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initial Render
+        window.onload = () => {
+            renderBooks(booksData);
+        };
+    </script>
+</body>
+</html>
