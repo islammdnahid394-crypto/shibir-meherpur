@@ -4,256 +4,699 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ICS Book - ইসলামী অনলাইন পাঠাগার</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary-green: #1b5e20;
+            --light-green: #2e7d32;
+            --accent-gold: #c5a059;
+            --cream-bg: #fdfbf7;
+            --card-cream: #f4efe6;
+            --text-dark: #2c3e50;
+            --text-muted: #666666;
+            --white: #ffffff;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'SolaimanLipi', Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
         body {
-            background-color: #f4f6f9;
-            color: #333;
+            background-color: var(--cream-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
         }
+
+        /* Navbar */
         header {
-            background-color: #1b5e20;
-            color: #fff;
-            padding: 1rem 2rem;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background-color: var(--primary-green);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
         }
-        header h1 {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
         }
-        header p {
+
+        .logo {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.2rem;
+        }
+
+        .nav-link {
+            color: #e8f5e9;
+            text-decoration: none;
+            font-weight: 600;
             font-size: 0.95rem;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-gold);
+        }
+
+        /* Hero & Search */
+        .hero {
+            background: linear-gradient(rgba(27, 94, 32, 0.85), rgba(27, 94, 32, 0.85)), 
+                        url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1000') center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 3.5rem 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 1.8rem;
             opacity: 0.9;
         }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            background: var(--white);
+            border-radius: 30px;
+            overflow: hidden;
+            padding: 5px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-box button {
+            background: var(--primary-green);
+            color: var(--white);
+            border: none;
+            padding: 0 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .search-box button:hover {
+            background: var(--light-green);
+        }
+
+        /* Container */
         .container {
             max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 15px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
         }
-        .filter-section {
+
+        .section-title {
+            text-align: center;
+            color: var(--primary-green);
+            font-size: 1.8rem;
+            margin-bottom: 1.8rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-gold);
+            margin: 8px auto 0;
+        }
+
+        /* Syllabus Grid Cards */
+        .syllabus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .syllabus-card {
+            background: var(--card-cream);
+            border: 2px solid #e0d8c3;
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .syllabus-card:hover {
+            transform: translateY(-5px);
+            background: var(--white);
+            border-color: var(--light-green);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        .syllabus-icon {
+            font-size: 2.8rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .syllabus-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .syllabus-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Filters */
+        .filter-container {
             display: flex;
             justify-content: center;
             gap: 10px;
             flex-wrap: wrap;
-            margin-bottom: 25px;
+            margin-bottom: 2rem;
         }
+
         .filter-btn {
-            background-color: #fff;
-            border: 1px solid #2e7d32;
-            color: #2e7d32;
+            background: var(--card-cream);
+            border: 1px solid #d4c8b0;
+            color: var(--primary-green);
             padding: 8px 18px;
             border-radius: 20px;
+            font-weight: 600;
             cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
+
         .filter-btn.active, .filter-btn:hover {
-            background-color: #2e7d32;
-            color: #fff;
+            background: var(--primary-green);
+            color: var(--white);
+            border-color: var(--primary-green);
         }
+
+        /* Book Grid Layout */
         .book-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.8rem;
         }
+
         .book-card {
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            background: var(--white);
+            border-radius: 10px;
+            border: 1px solid #e2dac9;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: transform 0.2s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+            transition: transform 0.2s;
         }
+
         .book-card:hover {
             transform: translateY(-4px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
         }
-        .cover-container {
+
+        .cover-wrapper {
             width: 100%;
-            height: 250px;
-            background-color: #e8f5e9;
+            height: 260px;
+            background: var(--card-cream);
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
         }
+
         .cover-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
+
         .fallback-cover {
             display: none;
             text-align: center;
             padding: 15px;
-            color: #2e7d32;
+            color: var(--primary-green);
             font-weight: bold;
         }
-        .category-badge {
+
+        .badge {
             position: absolute;
             top: 10px;
             left: 10px;
-            background-color: rgba(46, 125, 50, 0.9);
-            color: #fff;
-            padding: 3px 8px;
+            background: var(--primary-green);
+            color: var(--white);
             font-size: 0.75rem;
-            border-radius: 4px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: bold;
         }
-        .book-details {
-            padding: 15px;
+
+        .book-info {
+            padding: 1.2rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
+
         .book-title {
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: bold;
-            color: #1b5e20;
-            margin-bottom: 5px;
+            color: var(--primary-green);
+            margin-bottom: 0.4rem;
         }
+
         .book-author {
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 15px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
         }
-        .action-btns {
-            display: flex;
-            gap: 8px;
-        }
-        .btn {
-            flex: 1;
-            text-align: center;
-            padding: 7px 0;
-            text-decoration: none;
-            font-size: 0.85rem;
-            border-radius: 4px;
+
+        .btn-view {
+            width: 100%;
+            background: var(--primary-green);
+            color: var(--white);
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
             font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.3s;
         }
-        .btn-read {
-            background-color: #2e7d32;
-            color: #fff;
+
+        .btn-view:hover {
+            background: var(--light-green);
         }
-        .btn-download {
-            background-color: #e0e0e0;
-            color: #333;
+
+        /* Modal / PDF Viewer */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
         }
-        .btn:hover {
-            opacity: 0.9;
+
+        .modal-content {
+            background: var(--white);
+            width: 90%;
+            max-width: 900px;
+            height: 90vh;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-body {
+            flex: 1;
+            background: #f0f0f0;
+        }
+
+        .modal-body iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .modal-footer {
+            padding: 1rem;
+            background: var(--card-cream);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #e0d8c3;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-dl {
+            background: var(--primary-green);
+            color: var(--white);
+        }
+
+        .btn-share {
+            background: var(--accent-gold);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-green);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none; /* মোবাইল নেভিগেশন সহজ রাখার জন্য */
+            }
+            .hero h1 { font-size: 1.7rem; }
+            .modal-content { height: 95vh; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Main Navigation Bar -->
     <header>
-        <h1>ICS Book Library</h1>
-        <p>পাঠ্যসূচী ও সিলেবাসের সকল বইয়ের অনলাইন সংগ্রহ</p>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-book-open"></i>
+                <span>ICS Book</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a class="nav-link active" onclick="filterSyllabus('all')">হোম</a></li>
+                <li><a class="nav-link" onclick="filterSubject('আল-কুরআন ও আল-হাদিস')">আল-কুরআন ও হাদিস</a></li>
+                <li><a class="nav-link" onclick="filterSyllabus('স্কুল সিলেবাস')">স্কুল সিলেবাস</a></li>
+                <li><a class="nav-link" onclick="filterSyllabus('কর্মী সিলেবাস')">কর্মী সিলেবাস</a></li>
+                <li><a class="nav-link" onclick="filterSyllabus('সাথী সিলেবাস')">সাথী সিলেবাস</a></li>
+                <li><a class="nav-link" href="#contact">যোগাযোগ</a></li>
+            </ul>
+        </div>
     </header>
 
+    <!-- Hero Section with Search Bar -->
+    <div class="hero">
+        <h1>ইসলামী অনলাইন পাঠাগার</h1>
+        <p>জ্ঞানার্জনের জন্য সিলেবাসভিত্তিক সেরা বইগুলোর ডিজিটাল আর্কাইভ</p>
+        <div class="search-box">
+            <input type="text" id="searchInput" onkeyup="searchBooks()" placeholder="বইয়ের নাম, লেখক বা বিষয় দিয়ে খুঁজুন...">
+            <button><i class="fa-solid fa-magnifying-glass"></i> সার্চ</button>
+        </div>
+    </div>
+
     <div class="container">
-        <!-- সিলেবাস ফিল্টার -->
-        <div class="filter-section">
-            <button class="filter-btn active" onclick="filterCategory('all')">সকল বই</button>
-            <button class="filter-btn" onclick="filterCategory('সমর্থক')">সমর্থক সিলেবাস</button>
-            <button class="filter-btn" onclick="filterCategory('কর্মী')">কর্মী সিলেবাস</button>
-            <button class="filter-btn" onclick="filterCategory('সাথী')">সাথী সিলেবাস</button>
-            <button class="filter-btn" onclick="filterCategory('সদস্য')">সদস্য সিলেবাস</button>
+        <!-- Homepage Grid Layout (Syllabus Cards) -->
+        <h2 class="section-title">সিলেবাস ক্যাটাগরি</h2>
+        <div class="syllabus-grid">
+            <div class="syllabus-card" onclick="filterSyllabus('স্কুল সিলেবাস')">
+                <i class="fa-solid fa-school syllabus-icon"></i>
+                <h3>স্কুল সিলেবাস</h3>
+                <p>মাধ্যমিক ও উচ্চ মাধ্যমিক পর্যায়ের শিক্ষার্থীদের জন্য নির্ধারিত বইসমূহ</p>
+            </div>
+            <div class="syllabus-card" onclick="filterSyllabus('কর্মী সিলেবাস')">
+                <i class="fa-solid fa-user-check syllabus-icon"></i>
+                <h3>কর্মী সিলেবাস</h3>
+                <p>কর্মী ভাইদের আত্মগঠন ও বুনিয়াদি জ্ঞানার্জনের সেরা বইসমূহ</p>
+            </div>
+            <div class="syllabus-card" onclick="filterSyllabus('সাথী সিলেবাস')">
+                <i class="fa-solid fa-graduation-cap syllabus-icon"></i>
+                <h3>সাথী সিলেবাস</h3>
+                <p>সাথী ভাইদের ইসলামী ভাবাদর্শ ও আন্দোলনভিত্তিক অধ্যয়ন</p>
+            </div>
         </div>
 
-        <!-- বইয়ের লিস্ট -->
+        <!-- Book Section Header -->
+        <h2 class="section-title" id="bookSectionTitle">সকল বই</h2>
+
+        <!-- Topic Filtering Section -->
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterSubject('all')">সব বিষয়</button>
+            <button class="filter-btn" onclick="filterSubject('আকীদাহ')">আকীদাহ</button>
+            <button class="filter-btn" onclick="filterSubject('ইতিহাস')">ইতিহাস</button>
+            <button class="filter-btn" onclick="filterSubject('ইসলামী আন্দোলন')">ইসলামী আন্দোলন</button>
+            <button class="filter-btn" onclick="filterSubject('আত্মগঠন')">আত্মগঠন</button>
+            <button class="filter-btn" onclick="filterSubject('আল-কুরআন ও আল-হাদিস')">কুরআন ও হাদিস</button>
+        </div>
+
+        <!-- Book Grid -->
         <div class="book-grid" id="bookGrid"></div>
     </div>
 
+    <!-- PDF Viewer Modal (Book View Page) -->
+    <div class="modal" id="bookModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">বইয়ের নাম</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <iframe id="pdfFrame" src=""></iframe>
+            </div>
+            <div class="modal-footer">
+                <span id="modalAuthor" style="color: var(--text-muted); font-weight: bold;">লেখক</span>
+                <div class="modal-actions">
+                    <a id="downloadBtn" href="" download class="action-btn btn-dl">
+                        <i class="fa-solid fa-download"></i> ডাউনলোড
+                    </a>
+                    <button class="action-btn btn-share" onclick="shareBook()">
+                        <i class="fa-solid fa-share-nodes"></i> শেয়ার
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <p>&copy; 2026 ICS Book Library. সর্বস্বত্ব সংরক্ষিত।</p>
+        <p style="font-size:0.85rem; margin-top:5px;">যোগাযোগ: info@icsbook.info</p>
+    </footer>
+
     <script>
-        // সিলেবাসের বইয়ের লিস্ট (এখানে সব বই যোগ করতে পারবেন)
+        // বইয়ের ডেটাবেজ (Syllabus & Subject Tagged)
         const books = [
             {
+                id: 1,
                 title: "ইসলামের প্রাথমিক পরিচয়",
                 author: "বাংলাদেশ দাওয়াহ সার্কেল",
-                category: "সমর্থক",
+                syllabus: "স্কুল সিলেবাস",
+                subject: "আকীদাহ",
                 cover: "images/islamer-porichoy.jpg",
                 pdf: "pdf/islamer-porichoy.pdf"
             },
             {
+                id: 2,
                 title: "সাহসী মানুষের গল্প",
                 author: "মোশাররফ হোসেন খান",
-                category: "সমর্থক",
+                syllabus: "স্কুল সিলেবাস",
+                subject: "ইতিহাস",
                 cover: "images/sahasi-manus.jpg",
                 pdf: "pdf/sahasi-manus.pdf"
             },
             {
+                id: 3,
                 title: "ইসলামী দাওয়াত ও কর্মী",
-                author: "মাওলানা মওদূদী",
-                category: "কর্মী",
+                author: "মাওলানা সৈয়দ আবুল আলা মওদূদী",
+                syllabus: "কর্মী সিলেবাস",
+                subject: "ইসলামী আন্দোলন",
                 cover: "images/dawat-o-kormi.jpg",
                 pdf: "pdf/dawat-o-kormi.pdf"
             },
             {
+                id: 4,
                 title: "রাসূলুল্লাহর বিপ্লবী জীবন",
-                author: "আব্দুর রাজ্জাক",
-                category: "সাথী",
+                author: "মাওলানা মুহা. আবদুর রাজ্জাক",
+                syllabus: "সাথী সিলেবাস",
+                subject: "ইতিহাস",
                 cover: "images/biplobi-jibon.jpg",
                 pdf: "pdf/biplobi-jibon.pdf"
             },
             {
-                title: "ইসলামী রেনেসাঁ আন্দোলন",
-                author: "মাওলানা মওদূদী",
-                category: "সদস্য",
-                cover: "images/renesa-andolon.jpg",
-                pdf: "pdf/renesa-andolon.pdf"
+                id: 5,
+                title: "আত্মগঠনের পথ",
+                author: "খুররম মুরাদ",
+                syllabus: "কর্মী সিলেবাস",
+                subject: "আত্মগঠন",
+                cover: "images/atmagothon.jpg",
+                pdf: "pdf/atmagothon.pdf"
+            },
+            {
+                id: 6,
+                title: "কুরআনের চারটে মৌলিক পরিভাষা",
+                author: "মাওলানা সৈয়দ আবুল আলা মওদূদী",
+                syllabus: "সাথী সিলেবাস",
+                subject: "আল-কুরআন ও আল-হাদিস",
+                cover: "images/poribhasa.jpg",
+                pdf: "pdf/poribhasa.pdf"
             }
         ];
 
-        function displayBooks(items) {
+        let currentActiveBook = null;
+
+        // Render Books dynamically
+        function renderBooks(data) {
             const grid = document.getElementById('bookGrid');
             grid.innerHTML = '';
 
-            items.forEach(book => {
+            if (data.length === 0) {
+                grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">কোনো বই পাওয়া যায়নি।</p>`;
+                return;
+            }
+
+            data.forEach(book => {
                 const card = document.createElement('div');
                 card.className = 'book-card';
                 card.innerHTML = `
-                    <div class="cover-container">
-                        <span class="category-badge">${book.category}</span>
+                    <div class="cover-wrapper">
+                        <span class="badge">${book.syllabus}</span>
                         <img class="cover-img" src="${book.cover}" alt="${book.title}" 
                              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="fallback-cover">
-                            📖<br>${book.title}
+                            <i class="fa-solid fa-book" style="font-size:2rem; margin-bottom:5px;"></i><br>${book.title}
                         </div>
                     </div>
-                    <div class="book-details">
+                    <div class="book-info">
                         <div>
                             <div class="book-title">${book.title}</div>
                             <div class="book-author">${book.author}</div>
                         </div>
-                        <div class="action-btns">
-                            <a href="${book.pdf}" target="_blank" class="btn btn-read">পড়ুন</a>
-                            <a href="${book.pdf}" download class="btn btn-download">ডাউনলোড</a>
-                        </div>
+                        <button class="btn-view" onclick="openBookModal(${book.id})">
+                            <i class="fa-solid fa-book-open"></i> পড়ুন
+                        </button>
                     </div>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        function filterCategory(cat) {
+        // Search Functionality
+        function searchBooks() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = books.filter(b => 
+                b.title.toLowerCase().includes(query) || 
+                b.author.toLowerCase().includes(query) ||
+                b.subject.toLowerCase().includes(query)
+            );
+            renderBooks(filtered);
+        }
+
+        // Syllabus Filter
+        function filterSyllabus(syllabusName) {
+            document.getElementById('bookSectionTitle').innerText = syllabusName === 'all' ? 'সকল বই' : syllabusName;
+            if (syllabusName === 'all') {
+                renderBooks(books);
+            } else {
+                const filtered = books.filter(b => b.syllabus === syllabusName);
+                renderBooks(filtered);
+            }
+            window.scrollTo({ top: document.getElementById('bookSectionTitle').offsetTop - 80, behavior: 'smooth' });
+        }
+
+        // Subject Filter
+        function filterSubject(subjectName) {
+            // Update Active Class
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
-            if(cat === 'all') {
-                displayBooks(books);
+            if (subjectName === 'all') {
+                renderBooks(books);
             } else {
-                const filtered = books.filter(b => b.category === cat);
-                displayBooks(filtered);
+                const filtered = books.filter(b => b.subject === subjectName);
+                renderBooks(filtered);
             }
         }
 
-        // পেজ লোডে বই প্রর্দশন
-        displayBooks(books);
+        // PDF Reader Modal Functions
+        function openBookModal(id) {
+            const book = books.find(b => b.id === id);
+            if(!book) return;
+
+            currentActiveBook = book;
+            document.getElementById('modalTitle').innerText = book.title;
+            document.getElementById('modalAuthor').innerText = "লেখক: " + book.author;
+            document.getElementById('pdfFrame').src = book.pdf;
+            document.getElementById('downloadBtn').href = book.pdf;
+
+            document.getElementById('bookModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('bookModal').style.display = 'none';
+            document.getElementById('pdfFrame').src = '';
+        }
+
+        // Share Function
+        function shareBook() {
+            if (navigator.share && currentActiveBook) {
+                navigator.share({
+                    title: currentActiveBook.title,
+                    text: `${currentActiveBook.title} - ${currentActiveBook.author} এর বইটি পড়ুন ইসলামী অনলাইন পাঠাগারে।`,
+                    url: window.location.href,
+                }).catch(console.error);
+            } else {
+                alert("লিঙ্ক কপি করা হয়েছে: " + window.location.href);
+            }
+        }
+
+        // Initial Load
+        renderBooks(books);
     </script>
 </body>
 </html>
