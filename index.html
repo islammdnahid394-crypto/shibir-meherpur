@@ -20,7 +20,7 @@
                 extend: {
                     colors: {
                         brand: {
-                            green: '#006a4e',  /* Official Shibir Green Theme */
+                            green: '#006a4e',
                             dark: '#004d38',
                             light: '#008763',
                             accent: '#f59e0b',
@@ -41,32 +41,27 @@
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
-    <!-- Top Notice Ticker Bar -->
-    <div class="bg-brand-dark text-white text-xs md:text-sm py-2 px-4 flex items-center shadow-inner">
-        <span class="bg-red-600 text-white px-2.5 py-0.5 rounded font-bold text-xs uppercase mr-3 shrink-0">জরুরি নোটিশ</span>
-        <marquee behavior="scroll" direction="left" class="w-full font-medium">
-            বাংলাদেশ ইসলামী ছাত্রশিবির, মেহেরপুর জেলা শাখার অফিসিয়াল পোর্টালে আপনাকে স্বাগতম। নতুন সেশনের সাংগঠনিক কার্যক্রম ও ছাত্রকল্যাণ মূলক আপডেট জানতে নিয়মিত চোখ রাখুন।
-        </marquee>
+    <!-- Quranic Verse Header Ticker -->
+    <div class="bg-brand-dark text-amber-300 text-xs md:text-sm py-2 px-4 text-center font-medium shadow-inner">
+        <i class="fa-solid fa-book-quran mr-2"></i> "তোমাদের মধ্যে এমন একদল লোক থাকা উচিত যারা কল্যাণের দিকে আহ্বান করবে..." — আল কুরআন
     </div>
 
-    <!-- Main Header / Logo Bar -->
+    <!-- Main Header / Navigation -->
     <header class="bg-white shadow-sm border-b-2 border-brand-green sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             
-            <!-- Logo & Title Section -->
             <a href="#" class="flex items-center space-x-3 space-x-reverse group">
                 <div class="w-12 h-12 bg-brand-green text-white rounded-full flex items-center justify-center font-extrabold text-lg border-2 border-emerald-500 shadow-sm group-hover:bg-brand-dark transition">
                     মেহেরপুর
                 </div>
                 <div>
                     <h1 class="text-lg md:text-xl font-extrabold text-brand-green group-hover:text-brand-dark transition">বাংলাদেশ ইসলামী ছাত্রশিবির</h1>
-                    <p class="text-xs text-gray-600 font-semibold">মেহেরপুর জেলা শাখা (Meherpur District)</p>
+                    <p class="text-xs text-gray-600 font-semibold">মেহেরপুর জেলা শাখা</p>
                 </div>
             </a>
 
-            <!-- Mobile Menu Toggle Button -->
             <div class="md:hidden">
                 <button id="menu-btn" class="text-brand-green focus:outline-none text-2xl p-1">
                     <i class="fa-solid fa-bars"></i>
@@ -80,192 +75,292 @@
                 <ul class="flex flex-wrap space-x-6 text-sm font-bold py-2.5">
                     <li><a href="#" class="hover:text-amber-300 transition py-1">প্রচ্ছদ</a></li>
                     <li><a href="#about" class="hover:text-amber-300 transition py-1">আমাদের পরিচিতি</a></li>
-                    <li><a href="#committee" class="hover:text-amber-300 transition py-1">জেলা পরিষদ</a></li>
-                    <li><a href="#upazila" class="hover:text-amber-300 transition py-1">উপজেলা ও থানা শাখা</a></li>
-                    <li><a href="#notice" class="hover:text-amber-300 transition py-1">নোটিশ বোর্ড</a></li>
-                    <li><a href="#news" class="hover:text-amber-300 transition py-1">সংবাদ ও প্রেস বার্তা</a></li>
+                    <li><a href="#goal" class="hover:text-amber-300 transition py-1">লক্ষ্য ও উদ্দেশ্য</a></li>
+                    <li><a href="#program" class="hover:text-amber-300 transition py-1">৫ দফা কর্মসূচি</a></li>
+                    <li><a href="#activities" class="hover:text-amber-300 transition py-1">আমাদের কার্যক্রম</a></li>
+                    <li><a href="#upazila" class="hover:text-amber-300 transition py-1">থানা ও শাখা</a></li>
                     <li><a href="#contact" class="hover:text-amber-300 transition py-1">যোগাযোগ</a></li>
                 </ul>
             </div>
         </nav>
 
-        <!-- Mobile Navigation Menu Dropdown -->
+        <!-- Mobile Dropdown Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-brand-dark text-white px-4 py-3 space-y-2 border-t border-brand-green">
             <a href="#" class="block hover:bg-brand-green px-3 py-1.5 rounded">প্রচ্ছদ</a>
             <a href="#about" class="block hover:bg-brand-green px-3 py-1.5 rounded">আমাদের পরিচিতি</a>
-            <a href="#committee" class="block hover:bg-brand-green px-3 py-1.5 rounded">জেলা পরিষদ</a>
-            <a href="#upazila" class="block hover:bg-brand-green px-3 py-1.5 rounded">উপজেলা ও থানা শাখা</a>
-            <a href="#notice" class="block hover:bg-brand-green px-3 py-1.5 rounded">নোটিশ বোর্ড</a>
-            <a href="#news" class="block hover:bg-brand-green px-3 py-1.5 rounded">সংবাদ ও প্রেস বার্তা</a>
+            <a href="#goal" class="block hover:bg-brand-green px-3 py-1.5 rounded">লক্ষ্য ও উদ্দেশ্য</a>
+            <a href="#program" class="block hover:bg-brand-green px-3 py-1.5 rounded">৫ দফা কর্মসূচি</a>
+            <a href="#activities" class="block hover:bg-brand-green px-3 py-1.5 rounded">আমাদের কার্যক্রম</a>
+            <a href="#upazila" class="block hover:bg-brand-green px-3 py-1.5 rounded">থানা ও শাখা</a>
             <a href="#contact" class="block hover:bg-brand-green px-3 py-1.5 rounded">যোগাযোগ</a>
         </div>
     </header>
 
-    <!-- Banner / Hero Section -->
-    <section class="bg-gradient-to-r from-brand-dark via-brand-green to-emerald-900 text-white py-14 px-4 text-center">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-4xl font-extrabold mb-3 leading-snug">আল্লাহর সন্তুষ্টি অর্জনে ছাত্রসমাজের ঐক্য</h2>
-            <p class="text-sm md:text-base text-emerald-100 mb-6">মেহেরপুর জেলার সর্বস্তরের শিক্ষার্থীদের নৈতিক শিক্ষা, মেধা ও দেশপ্রেমে উদ্বুদ্ধ করার প্রত্যয়।</p>
-            <div class="flex justify-center gap-3 flex-wrap">
-                <a href="#about" class="bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold px-5 py-2 rounded text-sm transition shadow-md">আমাদের রূপকল্প</a>
-                <a href="https://www.facebook.com/share/1HvYV2JMUz/" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2 rounded text-sm transition flex items-center gap-2">
-                    <i class="fa-brands fa-facebook"></i> অফিসিয়াল ফেসবুক পেজ
-                </a>
+    <!-- Header Banner Image Section (আপনার ছবি অনুযায়ী) -->
+    <section class="relative bg-amber-50 border-b border-amber-200 overflow-hidden py-10 md:py-16">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="space-y-4 text-center md:text-left md:w-1/2">
+                <div class="inline-block bg-brand-green text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                    বাংলাদেশ ইসলামী ছাত্রশিবির | মেহেরপুর জেলা
+                </div>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-gray-900 leading-snug">
+                    সংগ্রাম আর সাহসী জীবন, সততায় ভরা মন;<br>
+                    <span class="text-brand-green">জ্ঞানের আলোয় বিপ্লব হবে, নতুন উজ্জীবন।</span>
+                </h2>
+                <p class="text-sm md:text-base text-gray-700 leading-relaxed">
+                    মেহেরপুর জেলার প্রতিটি শিক্ষা প্রতিষ্ঠানে ছাত্রসমাজের নৈতিক ও মেধাভিত্তিক উন্নয়নে কাজ করে যাচ্ছে বাংলাদেশ ইসলামী ছাত্রশিবির।
+                </p>
+                <div class="flex flex-wrap gap-3 justify-center md:justify-start pt-2">
+                    <a href="#activities" class="bg-brand-green hover:bg-brand-dark text-white font-bold px-5 py-2.5 rounded text-sm transition shadow-md">আমাদের কার্যক্রম দেখুন</a>
+                    <a href="https://www.facebook.com/share/1HvYV2JMUz/" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2.5 rounded text-sm transition flex items-center gap-2 shadow-md">
+                        <i class="fa-brands fa-facebook"></i> মেহেরপুর জেলা ফেসবুক পেজ
+                    </a>
+                </div>
+            </div>
+
+            <!-- Banner Graphic Container -->
+            <div class="md:w-1/2 w-full flex justify-center">
+                <div class="bg-gradient-to-tr from-emerald-100 to-amber-100 border-2 border-brand-green rounded-2xl p-6 text-center shadow-lg max-w-md w-full">
+                    <div class="w-20 h-20 bg-brand-green text-amber-300 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 shadow-md">
+                        <i class="fa-solid fa-book-open-reader"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-1">বাংলাদেশ ইসলামী ছাত্রশিবির</h3>
+                    <p class="text-xs font-semibold text-gray-600 mb-4">মেহেরপুর জেলা শাখা</p>
+                    <div class="text-xs text-gray-700 bg-white p-3 rounded-lg border border-gray-200 font-medium leading-relaxed">
+                        "সমৃদ্ধ বাংলাদেশ গড়ার লক্ষ্যে সৎ, দক্ষ ও দেশপ্রেমিক নাগরিক তৈরি"
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Main Content Grid -->
-    <main class="max-w-7xl mx-auto px-4 py-8 flex-grow grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
-        <!-- Main Content Area (2 Columns) -->
-        <section class="lg:col-span-2 space-y-8">
-            
-            <!-- News Section -->
-            <div id="news" class="bg-white p-6 rounded-md shadow-sm border border-gray-200">
-                <div class="flex justify-between items-center border-b-2 border-brand-green pb-2 mb-6">
-                    <h3 class="text-xl font-bold text-brand-green flex items-center">
-                        <i class="fa-regular fa-newspaper mr-2"></i> সাম্প্রতিক সংবাদ ও কার্যক্রম
-                    </h3>
-                    <a href="https://www.facebook.com/share/1HvYV2JMUz/" target="_blank" class="text-xs font-bold text-brand-green hover:underline">ফেসবুকে দেখুন &rarr;</a>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-6">
-                    <!-- News Card 1 -->
-                    <div class="border rounded-md overflow-hidden shadow-xs hover:shadow-md transition bg-white flex flex-col justify-between">
-                        <div class="p-4">
-                            <span class="text-[11px] bg-emerald-100 text-brand-green px-2 py-0.5 rounded font-semibold">মেধা বিকাশ</span>
-                            <h4 class="font-bold text-base my-2 text-gray-800 hover:text-brand-green cursor-pointer">মেহেরপুর সরকারি কলেজে নবীন বরণ ও ক্যারিয়ার গাইডলাইন</h4>
-                            <p class="text-xs text-gray-600 leading-relaxed">মেহেরপুর সরকারি কলেজের উচ্চমাধ্যমিক ও স্নাতক শ্রেণির নবীন শিক্ষার্থীদের নিয়ে এক ক্যারিয়ার দিকনির্দেশনামূলক সেশন সফলভাবে সম্পন্ন হয়েছে।</p>
-                        </div>
-                        <div class="p-4 pt-0 text-[11px] text-gray-400">মেহেরপুর সদর</div>
-                    </div>
+    <!-- 1. About Section (আমাদের পরিচিতি) -->
+    <section id="about" class="py-12 bg-white border-b border-gray-200">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-center mb-8">
+                <span class="text-xs font-bold text-brand-green uppercase tracking-wider bg-emerald-50 px-3 py-1 rounded-full">সংক্ষিপ্ত পরিচিতি</span>
+                <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900 mt-2">আমাদের পরিচিতি</h3>
+            </div>
+            <div class="bg-gray-50 p-6 md:p-8 rounded-lg border border-gray-200 shadow-sm leading-relaxed text-gray-700 text-base md:text-lg">
+                <p class="mb-4">
+                    দেশের প্রতিটি জনপদে কাজ করে যাচ্ছে বাংলাদেশ ইসলামী ছাত্রশিবির। মেহেরপুর জেলার ছাত্রসমাজকে আলোকিত সৎ মানুষ হিসেবে গড়ে তুলতে মেহেরপুর জেলা শাখা নিরলসভাবে কাজ করে চলেছে।
+                </p>
+                <p>
+                    শিবির একজন তরুণকে একই সাথে একজন ভাল ছাত্র ও একজন ভাল মুসলমান হিসেবে গড়ে তুলতে চেষ্টা করে। ইসলাম সকল মানুষের কল্যাণের জন্য; তাই ইসলামী ছাত্রশিবির মুসলমান, হিন্দু, বৌদ্ধ ও খ্রিস্টানসহ সবার কাছে ইসলামের সুমহান সৌন্দর্যকে সুন্দরভাবে তুলে ধরার কর্মসূচি নিয়ে এগিয়ে যাচ্ছে। তাই এই সুন্দর কর্মসূচি ও চরিত্রবান কর্মীদের প্রতি দিন দিন জনসমর্থন বাড়ছে। আসুন, আপনিও শিবিরের পতাকাতলে সমবেত হয়ে নিজেকে গড়ে তুলুন সুন্দর ও যোগ্যতম ব্যক্তি হিসেবে। শরিক হউন ইহকাল ও পরকালের মুক্তিকামী মানুষের এই কাফেলায়।
+                </p>
+            </div>
+        </div>
+    </section>
 
-                    <!-- News Card 2 -->
-                    <div class="border rounded-md overflow-hidden shadow-xs hover:shadow-md transition bg-white flex flex-col justify-between">
-                        <div class="p-4">
-                            <span class="text-[11px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-semibold">সমাজসেবা</span>
-                            <h4 class="font-bold text-base my-2 text-gray-800 hover:text-brand-green cursor-pointer">মুজিবনগর ও গাংনীতে ছাত্রকল্যাণ সামগ্রী বিতরণ</h4>
-                            <p class="text-xs text-gray-600 leading-relaxed">মেহেরপুর জেলার অসচ্ছল ও মেধাবী শিক্ষার্থীদের মাঝে শিক্ষা উপকরণ ও পাঠ্যপুস্তক বিতরণ কর্মসূচি অনুষ্ঠিত হয়েছে।</p>
-                        </div>
-                        <div class="p-4 pt-0 text-[11px] text-gray-400">মুজিবনগর / গাংনী</div>
+    <!-- 2. Goal Section (আমাদের লক্ষ্য) -->
+    <section id="goal" class="py-12 bg-emerald-50 border-b border-emerald-100">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <span class="text-xs font-bold text-brand-green uppercase tracking-wider bg-white px-3 py-1 rounded-full border border-emerald-200">মূল ভিত্তি</span>
+            <h3 class="text-2xl md:text-3xl font-extrabold text-brand-dark mt-2 mb-6">আমাদের লক্ষ্য</h3>
+            <div class="bg-white p-8 rounded-lg border-2 border-brand-green shadow-md">
+                <p class="text-lg md:text-2xl font-bold text-emerald-900 leading-relaxed">
+                    "আল্লাহ প্রদত্ত ও রাসুল (সা.) প্রদর্শিত বিধান অনুযায়ী মানুষের সার্বিক জীবনের পুনর্বিন্যাস করে আল্লাহর সন্তুষ্টি অর্জন।"
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 5-Point Program (৫ দফা কর্মসূচি) -->
+    <section id="program" class="py-12 bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <span class="text-xs font-bold text-brand-green uppercase tracking-wider bg-emerald-50 px-3 py-1 rounded-full">লক্ষ্য ও উদ্দেশ্য</span>
+                <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900 mt-2">৫ দফা কর্মসূচি</h3>
+                <p class="text-sm text-gray-500 mt-1">এই পাঁচটি স্তম্ভের ওপর ভিত্তি করেই আমাদের সকল কার্যক্রম পরিচালিত হয়</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Program 1 -->
+                <div class="bg-gray-50 p-5 rounded-lg border border-gray-200 hover:border-brand-green transition flex flex-col justify-between shadow-xs">
+                    <div>
+                        <div class="text-3xl font-black text-brand-green mb-2">০১</div>
+                        <h4 class="font-extrabold text-lg text-gray-900 mb-2">দাওয়াত</h4>
+                        <p class="text-xs text-gray-600 leading-relaxed">তরুণ ছাত্রসমাজের কাছে ইসলামের আহ্বান পৌঁছিয়ে তাদের মাঝে ইসলামী জ্ঞানার্জন এবং বাস্তবজীবনে ইসলামের পূর্ণ অনুশীলনের দায়িত্বানুভূতি জাগ্রত করা।</p>
+                    </div>
+                </div>
+
+                <!-- Program 2 -->
+                <div class="bg-gray-50 p-5 rounded-lg border border-gray-200 hover:border-brand-green transition flex flex-col justify-between shadow-xs">
+                    <div>
+                        <div class="text-3xl font-black text-brand-green mb-2">০২</div>
+                        <h4 class="font-extrabold text-lg text-gray-900 mb-2">সংগঠন</h4>
+                        <p class="text-xs text-gray-600 leading-relaxed">যেসব ছাত্র ইসলামী জীবনবিধান প্রতিষ্ঠার সংগ্রামে অংশ নিতে প্রস্তুত তাদেরকে সংগঠনের অধীনে সংঘবদ্ধ করা।</p>
+                    </div>
+                </div>
+
+                <!-- Program 3 -->
+                <div class="bg-gray-50 p-5 rounded-lg border border-gray-200 hover:border-brand-green transition flex flex-col justify-between shadow-xs">
+                    <div>
+                        <div class="text-3xl font-black text-brand-green mb-2">০৩</div>
+                        <h4 class="font-extrabold text-lg text-gray-900 mb-2">প্রশিক্ষণ</h4>
+                        <p class="text-xs text-gray-600 leading-relaxed">সংগঠিত ছাত্রদের ইসলামী জ্ঞান প্রদান ও আদর্শ চরিত্রবানরূপে গড়ে তুলে জাহেলিয়াতের সমস্ত চ্যালেঞ্জের মোকাবিলায় ইসলামের শ্রেষ্ঠত্ব প্রমাণ করার যোগ্যতাসম্পন্ন কর্মী হিসেবে গড়ার ব্যবস্থা করা।</p>
+                    </div>
+                </div>
+
+                <!-- Program 4 -->
+                <div class="bg-gray-50 p-5 rounded-lg border border-gray-200 hover:border-brand-green transition flex flex-col justify-between shadow-xs">
+                    <div>
+                        <div class="text-3xl font-black text-brand-green mb-2">০৪</div>
+                        <h4 class="font-extrabold text-lg text-gray-900 mb-2">ইসলামী শিক্ষা আন্দোলন ও ছাত্র সমস্যা</h4>
+                        <p class="text-xs text-gray-600 leading-relaxed">আদর্শ নাগরিক তৈরির উদ্দেশ্যে ইসলামী মূল্যবোধের ভিত্তিতে শিক্ষাব্যবস্থার পরিবর্তনের দাবিতে সংগ্রাম এবং ছাত্রসমাজের প্রকৃত সমস্যা সমাধানের সংগ্রামে নেতৃত্ব প্রদান।</p>
+                    </div>
+                </div>
+
+                <!-- Program 5 -->
+                <div class="bg-gray-50 p-5 rounded-lg border border-gray-200 hover:border-brand-green transition flex flex-col justify-between shadow-xs">
+                    <div>
+                        <div class="text-3xl font-black text-brand-green mb-2">০৫</div>
+                        <h4 class="font-extrabold text-lg text-gray-900 mb-2">ইসলামী সমাজ বিনির্মাণ</h4>
+                        <p class="text-xs text-gray-600 leading-relaxed">অর্থনৈতিক শোষণ, রাজনৈতিক নিপীড়ন এবং সাংস্কৃতিক গোলামি হতে মানবতার মুক্তির জন্য ইসলামী সমাজ বিনির্মাণে সর্বাত্মক প্রচেষ্টা চালানো।</p>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Committee Grid -->
-            <div id="committee" class="bg-white p-6 rounded-md shadow-sm border border-gray-200">
-                <div class="flex justify-between items-center border-b-2 border-brand-green pb-2 mb-6">
-                    <h3 class="text-xl font-bold text-brand-green flex items-center">
-                        <i class="fa-solid fa-users mr-2"></i> মেহেরপুর জেলা পরিচালনা পরিষদ
-                    </h3>
-                    <span class="text-xs font-bold text-gray-500">মেহেরপুর জেলা শাখা</span>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                    <div class="p-4 border rounded-md bg-emerald-50 hover:bg-emerald-100 border-emerald-100 transition">
-                        <div class="w-16 h-16 bg-brand-green text-white rounded-full mx-auto flex items-center justify-center font-bold text-xl mb-2">
-                            <i class="fa-solid fa-user-tie"></i>
-                        </div>
-                        <h4 class="font-bold text-gray-900">জেলা সভাপতি</h4>
-                        <p class="text-xs text-brand-green font-semibold">মেহেরপুর জেলা শাখা</p>
-                        <p class="text-[11px] text-gray-500 mt-1">বাংলাদেশ ইসলামী ছাত্রশিবির</p>
+    <!-- 4. Meherpur District Activities Section (মেহেরপুর জেলা শাখার কার্যক্রম) -->
+    <section id="activities" class="py-12 bg-gray-100 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <span class="text-xs font-bold text-brand-green uppercase tracking-wider bg-white px-3 py-1 rounded-full border border-gray-200">আমাদের ময়দান</span>
+                <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900 mt-2">মেহেরপুর জেলা শাখার নিয়মিত কার্যক্রম</h3>
+                <p class="text-sm text-gray-600 mt-1">মেহেরপুর জেলার সার্বিক কল্যাণ ও শিক্ষার্থীদের উন্নয়নে পরিচালিত মূল কার্যক্রমসমূহ</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Activity 1 -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-xs hover:border-brand-green transition">
+                    <div class="w-12 h-12 bg-emerald-100 text-brand-green rounded-lg flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-graduation-cap"></i>
                     </div>
+                    <h4 class="font-bold text-lg text-gray-900 mb-2">মেধাবী ও A+ শিক্ষার্থী সংবর্ধনা</h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        মেহেরপুর জেলার এসএসসি, এইচএসসি ও সমমানের পরীক্ষায় ভালো ফলাফল অর্জনকারী কৃতি শিক্ষার্থীদের মেধা মূল্যায়নে জেলা শাখার উদ্যোগে সংবর্ধনা প্রদান ও উপহার বিতরণ।
+                    </p>
+                </div>
 
-                    <div class="p-4 border rounded-md bg-emerald-50 hover:bg-emerald-100 border-emerald-100 transition">
-                        <div class="w-16 h-16 bg-brand-green text-white rounded-full mx-auto flex items-center justify-center font-bold text-xl mb-2">
-                            <i class="fa-solid fa-user-gear"></i>
-                        </div>
-                        <h4 class="font-bold text-gray-900">জেলা সেক্রেটারি</h4>
-                        <p class="text-xs text-brand-green font-semibold">মেহেরপুর জেলা শাখা</p>
-                        <p class="text-[11px] text-gray-500 mt-1">বাংলাদেশ ইসলামী ছাত্রশিবির</p>
+                <!-- Activity 2 -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-xs hover:border-brand-green transition">
+                    <div class="w-12 h-12 bg-emerald-100 text-brand-green rounded-lg flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-hands-holding-child"></i>
                     </div>
+                    <h4 class="font-bold text-lg text-gray-900 mb-2">বিনামূল্যে শিক্ষাসামগ্রী ও সচেতনতা</h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        মেহেরপুর সদরের মেহেরপুর সরকারি কলেজসহ বিভিন্ন উপজেলা ও ইউনিয়ন পর্যায়ের অসচ্ছল শিক্ষার্থীদের মাঝে বই, খাতা, কলম বিতরণ এবং শিক্ষা সচেতনতা কর্মসূচি।
+                    </p>
+                </div>
 
-                    <div class="p-4 border rounded-md bg-emerald-50 hover:bg-emerald-100 border-emerald-100 transition">
-                        <div class="w-16 h-16 bg-brand-green text-white rounded-full mx-auto flex items-center justify-center font-bold text-xl mb-2">
-                            <i class="fa-solid fa-user-shield"></i>
-                        </div>
-                        <h4 class="font-bold text-gray-900">সাংগঠনিক সম্পাদক</h4>
-                        <p class="text-xs text-brand-green font-semibold">মেহেরপুর জেলা শাখা</p>
-                        <p class="text-[11px] text-gray-500 mt-1">বাংলাদেশ ইসলামী ছাত্রশিবির</p>
+                <!-- Activity 3 -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-xs hover:border-brand-green transition">
+                    <div class="w-12 h-12 bg-emerald-100 text-brand-green rounded-lg flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-leaf"></i>
                     </div>
+                    <h4 class="font-bold text-lg text-gray-900 mb-2">পরিচ্ছন্নতা অভিযান ও বৃক্ষরোপণ</h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        মেহেরপুর জেলা ও উপজেলা সমূহের প্রধান প্রধান স্থান ও শিক্ষা প্রতিষ্ঠানে পরিচ্ছন্নতা অভিযান পরিচালনা এবং পরিবেশ রক্ষায় নিয়মিত ফলজ ও বনজ বৃক্ষরোপণ কর্মসূচি।
+                    </p>
+                </div>
+
+                <!-- Activity 4 -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-xs hover:border-brand-green transition">
+                    <div class="w-12 h-12 bg-emerald-100 text-brand-green rounded-lg flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-book-quran"></i>
+                    </div>
+                    <h4 class="font-bold text-lg text-gray-900 mb-2">পাঠচক্র ও চরিত্র গঠন</h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        শিক্ষার্থীদের মাঝে আল-কুরআন, হাদীস ও নৈতিক বইয়ের আলো ছড়িয়ে দিতে এবং আদর্শ নাগরিক হিসেবে গড়ে তুলতে মেহেরপুর জেলা জুড়ে নিয়মিত পাঠচক্র ও শিক্ষা আসর।
+                    </p>
+                </div>
+
+                <!-- Activity 5 -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-xs hover:border-brand-green transition">
+                    <div class="w-12 h-12 bg-emerald-100 text-brand-green rounded-lg flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-hand-holding-medical"></i>
+                    </div>
+                    <h4 class="font-bold text-lg text-gray-900 mb-2">মানবিক ও সামাজিক সেবা</h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        বন্যা, শীত কিংবা যেকোনো প্রাকৃতিক দুর্যোগে মেহেরপুরের অভাবী মানুষের পাশে দাঁড়ানো, বিনামূল্যে ব্লাড গ্রুপিং এবং চিকিৎসাসেবা বিষয়ক সামাজিক কার্যক্রম।
+                    </p>
+                </div>
+
+                <!-- Activity 6 -->
+                <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-xs hover:border-brand-green transition">
+                    <div class="w-12 h-12 bg-emerald-100 text-brand-green rounded-lg flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-volleyball"></i>
+                    </div>
+                    <h4 class="font-bold text-lg text-gray-900 mb-2">ক্রীড়া ও তরুণদের উৎসাহ প্রদান</h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        মাদক ও অপসংস্কৃতি থেকে ছাত্রসমাজকে মুক্ত রাখতে মেহেরপুর জেলার থানাসমূহে নিয়মিত ফুটবল, ক্রিকেট ও বার্ষিক মেধা ক্রীড়া প্রতিযোগিতার আয়োজন।
+                    </p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Upazila Structure Section -->
-            <div id="upazila" class="bg-white p-6 rounded-md shadow-sm border border-gray-200">
-                <h3 class="text-xl font-bold text-brand-green border-b-2 border-brand-green pb-2 mb-4 flex items-center">
-                    <i class="fa-solid fa-sitemap mr-2"></i> সাংগঠনিক শাখা সমূহ
-                </h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-xs">
-                    <div class="p-3 border rounded bg-gray-50 font-bold text-gray-700">মেহেরপুর সদর উপজেলা</div>
-                    <div class="p-3 border rounded bg-gray-50 font-bold text-gray-700">গাংনী উপজেলা</div>
-                    <div class="p-3 border rounded bg-gray-50 font-bold text-gray-700">মুজিবনগর উপজেলা</div>
-                    <div class="p-3 border rounded bg-gray-50 font-bold text-gray-700">মেহেরপুর সরকারি কলেজ</div>
-                </div>
+    <!-- 5. Upazila & Thana Sections (থানাসমূহ) -->
+    <section id="upazila" class="py-12 bg-white border-b border-gray-200">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <span class="text-xs font-bold text-brand-green uppercase tracking-wider bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">সাংগঠনিক কাঠামো</span>
+            <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900 mt-2 mb-8">মেহেরপুর জেলা অধীনস্থ থানা ও শাখাসমূহ</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm font-bold">
+                <div class="p-5 border rounded-lg bg-gray-50 shadow-xs hover:bg-emerald-50 hover:border-brand-green transition text-gray-800">মেহেরপুর সদর থানা</div>
+                <div class="p-5 border rounded-lg bg-gray-50 shadow-xs hover:bg-emerald-50 hover:border-brand-green transition text-gray-800">গাংনী থানা</div>
+                <div class="p-5 border rounded-lg bg-gray-50 shadow-xs hover:bg-emerald-50 hover:border-brand-green transition text-gray-800">মুজিবনগর থানা</div>
+                <div class="p-5 border rounded-lg bg-gray-50 shadow-xs hover:bg-emerald-50 hover:border-brand-green transition text-gray-800">মেহেরপুর সরকারি কলেজ শাখা</div>
             </div>
-
-        </section>
-
-        <!-- Sidebar Area (1 Column) -->
-        <aside class="space-y-6">
-            
-            <!-- Notice Board Box -->
-            <div id="notice" class="bg-white p-5 rounded-md shadow-sm border border-gray-200">
-                <div class="flex justify-between items-center border-b-2 border-brand-green pb-2 mb-4">
-                    <h3 class="text-lg font-bold text-brand-green flex items-center">
-                        <i class="fa-solid fa-bullhorn mr-2"></i> নোটিশ বোর্ড
-                    </h3>
-                </div>
-                
-                <ul class="divide-y divide-gray-100 text-xs space-y-2">
-                    <li class="pt-2">
-                        <p class="font-semibold text-gray-800 leading-relaxed">মেহেরপুর জেলা শাখার বার্ষিক পরিকল্পনা ও সদস্য সমাবেশ সংক্রান্ত নির্দেশনা।</p>
-                        <span class="text-[10px] text-gray-400">মেহেরপুর জেলা শাখা</span>
-                    </li>
-                    <li class="pt-2">
-                        <p class="font-semibold text-gray-800 leading-relaxed">এইচএসসি ও সমমানের উত্তীর্ণ শিক্ষার্থীদের জন্য অভিনন্দন ও সংবর্ধনা অনুষ্ঠান।</p>
-                        <span class="text-[10px] text-gray-400">মেহেরপুর জেলা শাখা</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Official Social Link Box -->
-            <div class="bg-blue-900 text-white p-5 rounded-md text-xs leading-relaxed shadow-sm">
-                <h4 class="font-bold text-sm mb-2 border-b border-blue-700 pb-1">অফিসিয়াল সামাজিক যোগাযোগ</h4>
-                <p class="mb-3">মেহেরপুর জেলা শাখার সকল লাইভ আপডেট ও প্রেস বার্তা পেতে আমাদের অফিশিয়াল ফেসবুক পেজে যুক্ত থাকুন।</p>
-                <a href="https://www.facebook.com/share/1HvYV2JMUz/" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2 rounded transition">
-                    <i class="fa-brands fa-facebook mr-1"></i> ফেসবুক পেজে যান
-                </a>
-            </div>
-
-        </aside>
-
-    </main>
+        </div>
+    </section>
 
     <!-- Footer Area -->
     <footer id="contact" class="bg-gray-900 text-gray-300 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-xs">
-            <div>
-                <h4 class="text-white font-bold text-sm mb-3 border-b border-gray-700 pb-1">বাংলাদেশ ইসলামী ছাত্রশিবির</h4>
-                <p class="text-gray-400 leading-relaxed">মেহেরপুর জেলা শাখা। মেহেরপুরের সর্বস্তরের শিক্ষার্থীদের নৈতিক চরিত্র ও আদর্শ গঠনে অঙ্গীকারবদ্ধ।</p>
+        <div class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-4 gap-8 text-xs">
+            
+            <!-- Column 1: About -->
+            <div class="space-y-3">
+                <h4 class="text-white font-bold text-sm border-b border-gray-700 pb-1">মেহেরপুর জেলা শাখা</h4>
+                <p class="text-gray-400 leading-relaxed">বাংলাদেশ ইসলামী ছাত্রশিবির, মেহেরপুর জেলা শাখা। সমৃদ্ধ বাংলাদেশ গড়ার লক্ষ্যে সৎ, দক্ষ ও দেশপ্রেমিক নাগরিক তৈরিতে অঙ্গীকারবদ্ধ।</p>
             </div>
-            <div>
-                <h4 class="text-white font-bold text-sm mb-3 border-b border-gray-700 pb-1">উপজেলা সমূহ</h4>
-                <ul class="space-y-1 text-gray-400">
-                    <li>&bull; মেহেরপুর সদর উপজেলা শাখা</li>
-                    <li>&bull; গাংনী উপজেলা শাখা</li>
-                    <li>&bull; মুজিবনগর উপজেলা শাখা</li>
-                    <li>&bull; মেহেরপুর সরকারি কলেজ শাখা</li>
+
+            <!-- Column 2: Central Official Links -->
+            <div class="space-y-2">
+                <h4 class="text-white font-bold text-sm border-b border-gray-700 pb-1">কেন্দ্রীয় গুরুত্বপূর্ণ লিংক</h4>
+                <ul class="space-y-1.5 text-gray-400">
+                    <li><a href="https://www.shibir.org.bd" target="_blank" class="hover:text-amber-400 transition">&bull; কেন্দ্রীয় ওয়েবসাইট (shibir.org.bd)</a></li>
+                    <li><a href="https://chhatrasangbadbd.com" target="_blank" class="hover:text-amber-400 transition">&bull; ছাত্র সংবাদ (chhatrasangbadbd.com)</a></li>
+                    <li><a href="https://www.shibir.org.bd/syllabus" target="_blank" class="hover:text-amber-400 transition">&bull; কর্মী সিলেবাস</a></li>
+                    <li><a href="https://www.shibir.org.bd/syllabus" target="_blank" class="hover:text-amber-400 transition">&bull; সাথী সিলেবাস</a></li>
+                    <li><a href="https://www.shibir.org.bd/syllabus" target="_blank" class="hover:text-amber-400 transition">&bull; সদস্য সিলেবাস</a></li>
                 </ul>
             </div>
-            <div>
-                <h4 class="text-white font-bold text-sm mb-3 border-b border-gray-700 pb-1">যোগাযোগ</h4>
-                <p class="mb-2"><i class="fa-solid fa-location-dot text-amber-400 mr-2"></i> প্রধান কার্যালয়, মেহেরপুর জেলা শাখা, মেহেরপুর</p>
-                <p class="mb-2"><i class="fa-brands fa-facebook text-blue-400 mr-2"></i> <a href="https://www.facebook.com/share/1HvYV2JMUz/" target="_blank" class="hover:underline">অফিসিয়াল ফেসবুক পেজ</a></p>
+
+            <!-- Column 3: Quick Navigation -->
+            <div class="space-y-2">
+                <h4 class="text-white font-bold text-sm border-b border-gray-700 pb-1">অন্যান্য তথ্য</h4>
+                <ul class="space-y-1.5 text-gray-400">
+                    <li><a href="#about" class="hover:text-amber-400 transition">&bull; পরিচিতি</a></li>
+                    <li><a href="#activities" class="hover:text-amber-400 transition">&bull; মেহেরপুরের কার্যক্রম</a></li>
+                    <li><a href="#upazila" class="hover:text-amber-400 transition">&bull; থানাসমূহ</a></li>
+                    <li><a href="https://www.shibir.org.bd/martyrs" target="_blank" class="hover:text-amber-400 transition">&bull; শহীদ তালিকা</a></li>
+                    <li><a href="https://www.shibir.org.bd/contact" target="_blank" class="hover:text-amber-400 transition">&bull; পরামর্শ/যোগাযোগ</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Social & Local Contact -->
+            <div class="space-y-3">
+                <h4 class="text-white font-bold text-sm border-b border-gray-700 pb-1">আমাদের সাথে যুক্ত থাকুন</h4>
+                <p><i class="fa-solid fa-location-dot text-amber-400 mr-2"></i> মেহেরপুর জেলা কার্যালয়, মেহেরপুর</p>
+                <a href="https://www.facebook.com/share/1HvYV2JMUz/" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded transition">
+                    <i class="fa-brands fa-facebook mr-1"></i> মেহেরপুর জেলা ফেসবুক পেজ
+                </a>
             </div>
         </div>
-        <div class="bg-black py-3 text-center text-[11px] text-gray-500 border-t border-gray-800">
+
+        <div class="bg-black py-4 text-center text-[11px] text-gray-500 border-t border-gray-800">
             &#169; ২০২৬ বাংলাদেশ ইসলামী ছাত্রশিবির - মেহেরপুর জেলা শাখা। সর্বস্বত্ব সংরক্ষিত।
         </div>
     </footer>
