@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>বাংলাদেশ ইসলামী ছাত্রশিবির | ঢাকা বিশ্ববিদ্যালয় শাখা</title>
+    <title>বাংলাদেশ ইসলামী ছাত্রশিবির | মেহেরপুর জেলা শাখা</title>
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Google Fonts (Noto Sans Bengali) -->
@@ -20,11 +20,11 @@
                 extend: {
                     colors: {
                         brand: {
-                            green: '#006a4e',  /* Official DU Shibir Green */
+                            green: '#006a4e',  /* Official Shibir Green Theme */
                             dark: '#004d38',
                             light: '#008763',
-                            red: '#d97706',
-                            accent: '#f59e0b'
+                            accent: '#f59e0b',
+                            red: '#dc2626'
                         }
                     },
                     fontFamily: {
@@ -45,11 +45,9 @@
 
     <!-- Top Notice Ticker Bar -->
     <div class="bg-brand-dark text-white text-xs md:text-sm py-2 px-4 flex items-center shadow-inner">
-        <span class="bg-red-600 text-white px-2.5 py-1 rounded font-bold text-xs uppercase mr-3 shrink-0">জরুরি বার্তা</span>
+        <span class="bg-red-600 text-white px-2.5 py-0.5 rounded font-bold text-xs uppercase mr-3 shrink-0">জরুরি নোটিশ</span>
         <marquee behavior="scroll" direction="left" class="w-full font-medium">
-            <a href="https://www.dushibir.org/notices" class="hover:underline">
-                ঢাকা বিশ্ববিদ্যালয়ের কেমিস্ট্রি বিভাগের শিক্ষার্থী মুরাদুল ইসলামের অকাল প্রয়াণে গভীর শোক ও মরহুমের মাগফিরাত কামনা করছে বাংলাদেশ ইসলামী ছাত্রশিবির, ঢাকা বিশ্ববিদ্যালয় শাখা।
-            </a>
+            বাংলাদেশ ইসলামী ছাত্রশিবির, মেহেরপুর জেলা শাখার অফিসিয়াল পোর্টালে আপনাকে স্বাগতম। নতুন সেশনের সাংগঠনিক কার্যক্রম ও ছাত্রকল্যাণ মূলক আপডেট জানতে নিয়মিত চোখ রাখুন।
         </marquee>
     </div>
 
@@ -57,14 +55,14 @@
     <header class="bg-white shadow-sm border-b-2 border-brand-green sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             
-            <!-- Logo & Title Link -->
-            <a href="https://www.dushibir.org/" class="flex items-center space-x-3 space-x-reverse group">
-                <div class="w-12 h-12 bg-brand-green text-white rounded-full flex items-center justify-center font-bold text-lg border-2 border-emerald-500 shadow-sm group-hover:bg-brand-dark transition">
-                    ঢাবি
+            <!-- Logo & Title Section -->
+            <a href="#" class="flex items-center space-x-3 space-x-reverse group">
+                <div class="w-12 h-12 bg-brand-green text-white rounded-full flex items-center justify-center font-extrabold text-lg border-2 border-emerald-500 shadow-sm group-hover:bg-brand-dark transition">
+                    মেহেরপুর
                 </div>
                 <div>
                     <h1 class="text-lg md:text-xl font-extrabold text-brand-green group-hover:text-brand-dark transition">বাংলাদেশ ইসলামী ছাত্রশিবির</h1>
-                    <p class="text-xs text-gray-600 font-semibold">ঢাকা বিশ্ববিদ্যালয় শাখা</p>
+                    <p class="text-xs text-gray-600 font-semibold">মেহেরপুর জেলা শাখা (Meherpur District)</p>
                 </div>
             </a>
 
@@ -76,43 +74,43 @@
             </div>
         </div>
 
-        <!-- Desktop Main Navigation Menu -->
+        <!-- Desktop Navigation Bar -->
         <nav class="bg-brand-green text-white hidden md:block">
             <div class="max-w-7xl mx-auto px-4">
                 <ul class="flex flex-wrap space-x-6 text-sm font-bold py-2.5">
-                    <li><a href="https://www.dushibir.org/" class="hover:text-amber-300 transition py-1">প্রচ্ছদ</a></li>
-                    <li><a href="https://www.dushibir.org/about" class="hover:text-amber-300 transition py-1">আমাদের পরিচিতি</a></li>
-                    <li><a href="https://www.dushibir.org/organogram" class="hover:text-amber-300 transition py-1">নির্বাহী পরিষদ</a></li>
-                    <li><a href="https://www.dushibir.org/notices" class="hover:text-amber-300 transition py-1">নোটিশ বোর্ড</a></li>
-                    <li><a href="https://www.dushibir.org/news" class="hover:text-amber-300 transition py-1">সংবাদ ও প্রেস বার্তা</a></li>
-                    <li><a href="https://www.dushibir.org/publications" class="hover:text-amber-300 transition py-1">প্রকাশনা</a></li>
-                    <li><a href="https://www.dushibir.org/gallery" class="hover:text-amber-300 transition py-1">গ্যালারি</a></li>
-                    <li><a href="https://www.dushibir.org/contact" class="hover:text-amber-300 transition py-1">যোগাযোগ</a></li>
+                    <li><a href="#" class="hover:text-amber-300 transition py-1">প্রচ্ছদ</a></li>
+                    <li><a href="#about" class="hover:text-amber-300 transition py-1">আমাদের পরিচিতি</a></li>
+                    <li><a href="#committee" class="hover:text-amber-300 transition py-1">জেলা পরিষদ</a></li>
+                    <li><a href="#upazila" class="hover:text-amber-300 transition py-1">উপজেলা ও থানা শাখা</a></li>
+                    <li><a href="#notice" class="hover:text-amber-300 transition py-1">নোটিশ বোর্ড</a></li>
+                    <li><a href="#news" class="hover:text-amber-300 transition py-1">সংবাদ ও প্রেস বার্তা</a></li>
+                    <li><a href="#contact" class="hover:text-amber-300 transition py-1">যোগাযোগ</a></li>
                 </ul>
             </div>
         </nav>
 
-        <!-- Mobile Navigation Dropdown Menu -->
+        <!-- Mobile Navigation Menu Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden bg-brand-dark text-white px-4 py-3 space-y-2 border-t border-brand-green">
-            <a href="https://www.dushibir.org/" class="block hover:bg-brand-green px-3 py-1.5 rounded">প্রচ্ছদ</a>
-            <a href="https://www.dushibir.org/about" class="block hover:bg-brand-green px-3 py-1.5 rounded">আমাদের পরিচিতি</a>
-            <a href="https://www.dushibir.org/organogram" class="block hover:bg-brand-green px-3 py-1.5 rounded">নির্বাহী পরিষদ</a>
-            <a href="https://www.dushibir.org/notices" class="block hover:bg-brand-green px-3 py-1.5 rounded">নোটিশ বোর্ড</a>
-            <a href="https://www.dushibir.org/news" class="block hover:bg-brand-green px-3 py-1.5 rounded">সংবাদ ও প্রেস বার্তা</a>
-            <a href="https://www.dushibir.org/publications" class="block hover:bg-brand-green px-3 py-1.5 rounded">প্রকাশনা</a>
-            <a href="https://www.dushibir.org/gallery" class="block hover:bg-brand-green px-3 py-1.5 rounded">গ্যালারি</a>
-            <a href="https://www.dushibir.org/contact" class="block hover:bg-brand-green px-3 py-1.5 rounded">যোগাযোগ</a>
+            <a href="#" class="block hover:bg-brand-green px-3 py-1.5 rounded">প্রচ্ছদ</a>
+            <a href="#about" class="block hover:bg-brand-green px-3 py-1.5 rounded">আমাদের পরিচিতি</a>
+            <a href="#committee" class="block hover:bg-brand-green px-3 py-1.5 rounded">জেলা পরিষদ</a>
+            <a href="#upazila" class="block hover:bg-brand-green px-3 py-1.5 rounded">উপজেলা ও থানা শাখা</a>
+            <a href="#notice" class="block hover:bg-brand-green px-3 py-1.5 rounded">নোটিশ বোর্ড</a>
+            <a href="#news" class="block hover:bg-brand-green px-3 py-1.5 rounded">সংবাদ ও প্রেস বার্তা</a>
+            <a href="#contact" class="block hover:bg-brand-green px-3 py-1.5 rounded">যোগাযোগ</a>
         </div>
     </header>
 
     <!-- Banner / Hero Section -->
-    <section class="bg-gradient-to-r from-brand-dark via-brand-green to-emerald-900 text-white py-12 px-4 text-center">
+    <section class="bg-gradient-to-r from-brand-dark via-brand-green to-emerald-900 text-white py-14 px-4 text-center">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-2xl md:text-4xl font-extrabold mb-3 leading-snug">আল্লাহর সন্তুষ্টি অর্জনে ছাত্রসমাজের ঐক্য</h2>
-            <p class="text-sm md:text-base text-emerald-100 mb-6">জ্ঞান, চরিত্র, মেধা ও শিক্ষার্থীবান্ধব কর্মসূচির মাধ্যমে নতুন এক ক্যাম্পাস গড়ার প্রত্যয়।</p>
+            <p class="text-sm md:text-base text-emerald-100 mb-6">মেহেরপুর জেলার সর্বস্তরের শিক্ষার্থীদের নৈতিক শিক্ষা, মেধা ও দেশপ্রেমে উদ্বুদ্ধ করার প্রত্যয়।</p>
             <div class="flex justify-center gap-3 flex-wrap">
-                <a href="https://www.dushibir.org/about" class="bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold px-5 py-2 rounded text-sm transition shadow-md">আমাদের লক্ষ্য ও রূপকল্প</a>
-                <a href="https://www.dushibir.org/contact" class="bg-transparent border border-white hover:bg-white hover:text-brand-dark font-bold px-5 py-2 rounded text-sm transition">যোগাযোগ করুন</a>
+                <a href="#about" class="bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold px-5 py-2 rounded text-sm transition shadow-md">আমাদের রূপকল্প</a>
+                <a href="https://www.facebook.com/share/1HvYV2JMUz/" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2 rounded text-sm transition flex items-center gap-2">
+                    <i class="fa-brands fa-facebook"></i> অফিসিয়াল ফেসবুক পেজ
+                </a>
             </div>
         </div>
     </section>
@@ -120,81 +118,90 @@
     <!-- Main Content Grid -->
     <main class="max-w-7xl mx-auto px-4 py-8 flex-grow grid grid-cols-1 lg:grid-cols-3 gap-8">
         
-        <!-- Main News & Activities Section (2 Columns) -->
+        <!-- Main Content Area (2 Columns) -->
         <section class="lg:col-span-2 space-y-8">
             
-            <!-- Recent News -->
-            <div class="bg-white p-6 rounded-md shadow-sm border border-gray-200">
+            <!-- News Section -->
+            <div id="news" class="bg-white p-6 rounded-md shadow-sm border border-gray-200">
                 <div class="flex justify-between items-center border-b-2 border-brand-green pb-2 mb-6">
                     <h3 class="text-xl font-bold text-brand-green flex items-center">
                         <i class="fa-regular fa-newspaper mr-2"></i> সাম্প্রতিক সংবাদ ও কার্যক্রম
                     </h3>
-                    <a href="https://www.dushibir.org/news" class="text-xs font-bold text-brand-green hover:underline">সবগুলো দেখুন &rarr;</a>
+                    <a href="https://www.facebook.com/share/1HvYV2JMUz/" target="_blank" class="text-xs font-bold text-brand-green hover:underline">ফেসবুকে দেখুন &rarr;</a>
                 </div>
                 
                 <div class="grid md:grid-cols-2 gap-6">
-                    <!-- News Item 1 -->
+                    <!-- News Card 1 -->
                     <div class="border rounded-md overflow-hidden shadow-xs hover:shadow-md transition bg-white flex flex-col justify-between">
                         <div class="p-4">
-                            <span class="text-[11px] bg-emerald-100 text-brand-green px-2 py-0.5 rounded font-semibold">ক্যাম্পাস সেবা</span>
-                            <a href="https://www.dushibir.org/news" class="block font-bold text-base my-2 text-gray-800 hover:text-brand-green transition">
-                                শেখ মুজিবুর রহমান হলের ভবন মসজিদে এসি স্থাপন
-                            </a>
-                            <p class="text-xs text-gray-600 leading-relaxed">ছাত্রশিবির ঢাকা বিশ্ববিদ্যালয় শাখার উদ্যোগে শেখ মুজিবুর রহমান হল মসজিদে নবস্থাপিত এসি উদ্বোধন ও সংক্ষিপ্ত মোনাজাত অনুষ্ঠিত হয়েছে।</p>
+                            <span class="text-[11px] bg-emerald-100 text-brand-green px-2 py-0.5 rounded font-semibold">মেধা বিকাশ</span>
+                            <h4 class="font-bold text-base my-2 text-gray-800 hover:text-brand-green cursor-pointer">মেহেরপুর সরকারি কলেজে নবীন বরণ ও ক্যারিয়ার গাইডলাইন</h4>
+                            <p class="text-xs text-gray-600 leading-relaxed">মেহেরপুর সরকারি কলেজের উচ্চমাধ্যমিক ও স্নাতক শ্রেণির নবীন শিক্ষার্থীদের নিয়ে এক ক্যারিয়ার দিকনির্দেশনামূলক সেশন সফলভাবে সম্পন্ন হয়েছে।</p>
                         </div>
-                        <div class="p-4 pt-0 text-[11px] text-gray-400">২৭ সেপ্টেম্বর, ২০২৬</div>
+                        <div class="p-4 pt-0 text-[11px] text-gray-400">মেহেরপুর সদর</div>
                     </div>
 
-                    <!-- News Item 2 -->
+                    <!-- News Card 2 -->
                     <div class="border rounded-md overflow-hidden shadow-xs hover:shadow-md transition bg-white flex flex-col justify-between">
                         <div class="p-4">
-                            <span class="text-[11px] bg-red-100 text-red-800 px-2 py-0.5 rounded font-semibold">শোকবার্তা</span>
-                            <a href="https://www.dushibir.org/news" class="block font-bold text-base my-2 text-gray-800 hover:text-brand-green transition">
-                                কেমিস্ট্রি বিভাগের শিক্ষার্থী মুরাদুল ইসলামের মৃত্যুতে শোক
-                            </a>
-                            <p class="text-xs text-gray-600 leading-relaxed">ড. মুহাম্মদ শহীদুল্লাহ হলের আবাসিক শিক্ষার্থী মুরাদুল ইসলামের ইন্তেকালে গভীর তা'যিয়াত ও পরিবারের প্রতি সমবেদনা প্রকাশ।</p>
+                            <span class="text-[11px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-semibold">সমাজসেবা</span>
+                            <h4 class="font-bold text-base my-2 text-gray-800 hover:text-brand-green cursor-pointer">মুজিবনগর ও গাংনীতে ছাত্রকল্যাণ সামগ্রী বিতরণ</h4>
+                            <p class="text-xs text-gray-600 leading-relaxed">মেহেরপুর জেলার অসচ্ছল ও মেধাবী শিক্ষার্থীদের মাঝে শিক্ষা উপকরণ ও পাঠ্যপুস্তক বিতরণ কর্মসূচি অনুষ্ঠিত হয়েছে।</p>
                         </div>
-                        <div class="p-4 pt-0 text-[11px] text-gray-400">২৭ সেপ্টেম্বর, ২০২৬</div>
+                        <div class="p-4 pt-0 text-[11px] text-gray-400">মুজিবনগর / গাংনী</div>
                     </div>
                 </div>
             </div>
 
             <!-- Committee Grid -->
-            <div class="bg-white p-6 rounded-md shadow-sm border border-gray-200">
+            <div id="committee" class="bg-white p-6 rounded-md shadow-sm border border-gray-200">
                 <div class="flex justify-between items-center border-b-2 border-brand-green pb-2 mb-6">
                     <h3 class="text-xl font-bold text-brand-green flex items-center">
-                        <i class="fa-solid fa-users mr-2"></i> ঢাকা বিশ্ববিদ্যালয় শাখা পরিচালনা পরিষদ
+                        <i class="fa-solid fa-users mr-2"></i> মেহেরপুর জেলা পরিচালনা পরিষদ
                     </h3>
-                    <a href="https://www.dushibir.org/organogram" class="text-xs font-bold text-brand-green hover:underline">পূর্ণাঙ্গ কমিটি &rarr;</a>
+                    <span class="text-xs font-bold text-gray-500">মেহেরপুর জেলা শাখা</span>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                    <a href="https://www.dushibir.org/organogram" class="p-4 border rounded-md bg-emerald-50 hover:bg-emerald-100 border-emerald-100 transition block">
+                    <div class="p-4 border rounded-md bg-emerald-50 hover:bg-emerald-100 border-emerald-100 transition">
                         <div class="w-16 h-16 bg-brand-green text-white rounded-full mx-auto flex items-center justify-center font-bold text-xl mb-2">
                             <i class="fa-solid fa-user-tie"></i>
                         </div>
-                        <h4 class="font-bold text-gray-900">মুহা. মহিউদ্দীন খান</h4>
-                        <p class="text-xs text-brand-green font-semibold">সভাপতি</p>
-                        <p class="text-[11px] text-gray-500 mt-1">লোকপ্রশাসন বিভাগ</p>
-                    </a>
+                        <h4 class="font-bold text-gray-900">জেলা সভাপতি</h4>
+                        <p class="text-xs text-brand-green font-semibold">মেহেরপুর জেলা শাখা</p>
+                        <p class="text-[11px] text-gray-500 mt-1">বাংলাদেশ ইসলামী ছাত্রশিবির</p>
+                    </div>
 
-                    <a href="https://www.dushibir.org/organogram" class="p-4 border rounded-md bg-emerald-50 hover:bg-emerald-100 border-emerald-100 transition block">
+                    <div class="p-4 border rounded-md bg-emerald-50 hover:bg-emerald-100 border-emerald-100 transition">
                         <div class="w-16 h-16 bg-brand-green text-white rounded-full mx-auto flex items-center justify-center font-bold text-xl mb-2">
                             <i class="fa-solid fa-user-gear"></i>
                         </div>
-                        <h4 class="font-bold text-gray-900">আশিকুর রহমান</h4>
-                        <p class="text-xs text-brand-green font-semibold">সেক্রেটারি</p>
-                        <p class="text-[11px] text-gray-500 mt-1">শান্তি ও সংঘর্ষ অধ্যয়ন বিভাগ</p>
-                    </a>
+                        <h4 class="font-bold text-gray-900">জেলা সেক্রেটারি</h4>
+                        <p class="text-xs text-brand-green font-semibold">মেহেরপুর জেলা শাখা</p>
+                        <p class="text-[11px] text-gray-500 mt-1">বাংলাদেশ ইসলামী ছাত্রশিবির</p>
+                    </div>
 
-                    <a href="https://www.dushibir.org/organogram" class="p-4 border rounded-md bg-emerald-50 hover:bg-emerald-100 border-emerald-100 transition block">
+                    <div class="p-4 border rounded-md bg-emerald-50 hover:bg-emerald-100 border-emerald-100 transition">
                         <div class="w-16 h-16 bg-brand-green text-white rounded-full mx-auto flex items-center justify-center font-bold text-xl mb-2">
                             <i class="fa-solid fa-user-shield"></i>
                         </div>
-                        <h4 class="font-bold text-gray-900">মু. সাজ্জাদ হোসাইন খাঁন</h4>
-                        <p class="text-xs text-brand-green font-semibold">সাংগঠনিক সম্পাদক</p>
-                        <p class="text-[11px] text-gray-500 mt-1">আরবি বিভাগ</p>
-                    </a>
+                        <h4 class="font-bold text-gray-900">সাংগঠনিক সম্পাদক</h4>
+                        <p class="text-xs text-brand-green font-semibold">মেহেরপুর জেলা শাখা</p>
+                        <p class="text-[11px] text-gray-500 mt-1">বাংলাদেশ ইসলামী ছাত্রশিবির</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upazila Structure Section -->
+            <div id="upazila" class="bg-white p-6 rounded-md shadow-sm border border-gray-200">
+                <h3 class="text-xl font-bold text-brand-green border-b-2 border-brand-green pb-2 mb-4 flex items-center">
+                    <i class="fa-solid fa-sitemap mr-2"></i> সাংগঠনিক শাখা সমূহ
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-xs">
+                    <div class="p-3 border rounded bg-gray-50 font-bold text-gray-700">মেহেরপুর সদর উপজেলা</div>
+                    <div class="p-3 border rounded bg-gray-50 font-bold text-gray-700">গাংনী উপজেলা</div>
+                    <div class="p-3 border rounded bg-gray-50 font-bold text-gray-700">মুজিবনগর উপজেলা</div>
+                    <div class="p-3 border rounded bg-gray-50 font-bold text-gray-700">মেহেরপুর সরকারি কলেজ</div>
                 </div>
             </div>
 
@@ -204,37 +211,31 @@
         <aside class="space-y-6">
             
             <!-- Notice Board Box -->
-            <div class="bg-white p-5 rounded-md shadow-sm border border-gray-200">
+            <div id="notice" class="bg-white p-5 rounded-md shadow-sm border border-gray-200">
                 <div class="flex justify-between items-center border-b-2 border-brand-green pb-2 mb-4">
                     <h3 class="text-lg font-bold text-brand-green flex items-center">
                         <i class="fa-solid fa-bullhorn mr-2"></i> নোটিশ বোর্ড
                     </h3>
-                    <a href="https://www.dushibir.org/notices" class="text-xs font-bold text-brand-green hover:underline">সব নোটিশ</a>
                 </div>
                 
                 <ul class="divide-y divide-gray-100 text-xs space-y-2">
                     <li class="pt-2">
-                        <a href="https://www.dushibir.org/notices" class="font-semibold text-gray-800 hover:text-brand-green leading-relaxed block">
-                            ঢাবি শাখা ছাত্রশিবিরের ২০২৬ সেশনের পূর্ণাঙ্গ কমিটি অনুমোদন সংক্রান্ত নোটিশ।
-                        </a>
-                        <span class="text-[10px] text-gray-400">০৮ মার্চ, ২০২৬</span>
+                        <p class="font-semibold text-gray-800 leading-relaxed">মেহেরপুর জেলা শাখার বার্ষিক পরিকল্পনা ও সদস্য সমাবেশ সংক্রান্ত নির্দেশনা।</p>
+                        <span class="text-[10px] text-gray-400">মেহেরপুর জেলা শাখা</span>
                     </li>
                     <li class="pt-2">
-                        <a href="https://www.dushibir.org/notices" class="font-semibold text-gray-800 hover:text-brand-green leading-relaxed block">
-                            ঢাকা বিশ্ববিদ্যালয় শাখার বার্ষিক সদস্য সমাবেশ সংক্রান্ত বিজ্ঞপ্তি।
-                        </a>
-                        <span class="text-[10px] text-gray-400">০৫ জানুয়ারি, ২০২৬</span>
+                        <p class="font-semibold text-gray-800 leading-relaxed">এইচএসসি ও সমমানের উত্তীর্ণ শিক্ষার্থীদের জন্য অভিনন্দন ও সংবর্ধনা অনুষ্ঠান।</p>
+                        <span class="text-[10px] text-gray-400">মেহেরপুর জেলা শাখা</span>
                     </li>
                 </ul>
             </div>
 
-            <!-- Media Section Info -->
-            <div class="bg-brand-dark text-white p-5 rounded-md text-xs leading-relaxed shadow-sm">
-                <h4 class="font-bold text-sm mb-2 border-b border-emerald-600 pb-1">প্রচার ও মিডিয়া বিভাগ</h4>
-                <p class="mb-2"><strong>মিডিয়া সম্পাদক:</strong> মো. মিফতাহুল হোসাইন আল মারুফ</p>
-                <p class="text-emerald-100">বাংলাদেশ ইসলামী ছাত্রশিবির, ঢাকা বিশ্ববিদ্যালয় শাখা।</p>
-                <a href="https://www.dushibir.org/contact" class="inline-block mt-3 bg-amber-500 text-gray-900 font-bold px-3 py-1.5 rounded hover:bg-amber-600 transition">
-                    প্রেস সংক্রান্ত যোগাযোগ
+            <!-- Official Social Link Box -->
+            <div class="bg-blue-900 text-white p-5 rounded-md text-xs leading-relaxed shadow-sm">
+                <h4 class="font-bold text-sm mb-2 border-b border-blue-700 pb-1">অফিসিয়াল সামাজিক যোগাযোগ</h4>
+                <p class="mb-3">মেহেরপুর জেলা শাখার সকল লাইভ আপডেট ও প্রেস বার্তা পেতে আমাদের অফিশিয়াল ফেসবুক পেজে যুক্ত থাকুন।</p>
+                <a href="https://www.facebook.com/share/1HvYV2JMUz/" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2 rounded transition">
+                    <i class="fa-brands fa-facebook mr-1"></i> ফেসবুক পেজে যান
                 </a>
             </div>
 
@@ -243,34 +244,33 @@
     </main>
 
     <!-- Footer Area -->
-    <footer class="bg-gray-900 text-gray-300 mt-auto">
+    <footer id="contact" class="bg-gray-900 text-gray-300 mt-auto">
         <div class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-xs">
             <div>
                 <h4 class="text-white font-bold text-sm mb-3 border-b border-gray-700 pb-1">বাংলাদেশ ইসলামী ছাত্রশিবির</h4>
-                <p class="text-gray-400 leading-relaxed">ঢাকা বিশ্ববিদ্যালয় শাখা। শিক্ষার্থীদের নৈতিক মেধা ও নেতৃত্ব বিকাশে সর্বদা নিবেদিত।</p>
+                <p class="text-gray-400 leading-relaxed">মেহেরপুর জেলা শাখা। মেহেরপুরের সর্বস্তরের শিক্ষার্থীদের নৈতিক চরিত্র ও আদর্শ গঠনে অঙ্গীকারবদ্ধ।</p>
             </div>
             <div>
-                <h4 class="text-white font-bold text-sm mb-3 border-b border-gray-700 pb-1">দ্রুত লিঙ্কসমূহ</h4>
-                <ul class="space-y-2">
-                    <li><a href="https://www.dushibir.org/about" class="hover:text-amber-400 transition">&bull; আমাদের পরিচিতি</a></li>
-                    <li><a href="https://www.dushibir.org/organogram" class="hover:text-amber-400 transition">&bull; পরিচালনা পরিষদ</a></li>
-                    <li><a href="https://www.dushibir.org/notices" class="hover:text-amber-400 transition">&bull; নোটিশ বোর্ড</a></li>
-                    <li><a href="https://www.dushibir.org/publications" class="hover:text-amber-400 transition">&bull; প্রকাশনা ও আর্কাইভ</a></li>
+                <h4 class="text-white font-bold text-sm mb-3 border-b border-gray-700 pb-1">উপজেলা সমূহ</h4>
+                <ul class="space-y-1 text-gray-400">
+                    <li>&bull; মেহেরপুর সদর উপজেলা শাখা</li>
+                    <li>&bull; গাংনী উপজেলা শাখা</li>
+                    <li>&bull; মুজিবনগর উপজেলা শাখা</li>
+                    <li>&bull; মেহেরপুর সরকারি কলেজ শাখা</li>
                 </ul>
             </div>
             <div>
-                <h4 class="text-white font-bold text-sm mb-3 border-b border-gray-700 pb-1">যোগাযোগের স্থান</h4>
-                <p class="mb-2"><i class="fa-solid fa-location-dot text-amber-400 mr-2"></i> ঢাকা বিশ্ববিদ্যালয় ক্যাম্পাস, ঢাকা-১০০০</p>
-                <p class="mb-2"><i class="fa-solid fa-envelope text-amber-400 mr-2"></i> info@dushibir.org</p>
-                <p><i class="fa-solid fa-globe text-amber-400 mr-2"></i> www.dushibir.org</p>
+                <h4 class="text-white font-bold text-sm mb-3 border-b border-gray-700 pb-1">যোগাযোগ</h4>
+                <p class="mb-2"><i class="fa-solid fa-location-dot text-amber-400 mr-2"></i> প্রধান কার্যালয়, মেহেরপুর জেলা শাখা, মেহেরপুর</p>
+                <p class="mb-2"><i class="fa-brands fa-facebook text-blue-400 mr-2"></i> <a href="https://www.facebook.com/share/1HvYV2JMUz/" target="_blank" class="hover:underline">অফিসিয়াল ফেসবুক পেজ</a></p>
             </div>
         </div>
         <div class="bg-black py-3 text-center text-[11px] text-gray-500 border-t border-gray-800">
-            &#169; ২০২৬ বাংলাদেশ ইসলামী ছাত্রশিবির - ঢাকা বিশ্ববিদ্যালয় শাখা। সর্বস্বত্ব সংরক্ষিত।
+            &#169; ২০২৬ বাংলাদেশ ইসলামী ছাত্রশিবির - মেহেরপুর জেলা শাখা। সর্বস্বত্ব সংরক্ষিত।
         </div>
     </footer>
 
-    <!-- JavaScript for Mobile Menu Toggle -->
+    <!-- JavaScript for Mobile Menu -->
     <script>
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
